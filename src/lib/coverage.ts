@@ -1,5 +1,5 @@
-import { flammability } from './data'
-import type { FlammabilityPoint } from './types'
+import { flammability } from './data.js'
+import type { FlammabilityPoint } from './types.js'
 
 export type CoverageLevel = 'within' | 'edge' | 'outside'
 

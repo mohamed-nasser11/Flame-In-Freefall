@@ -1,5 +1,5 @@
-import findingsJson from '../data/findings.json'
-import flammabilityJson from '../data/flammability.json'
+import findingsJson from '../data/findings.json' with { type: 'json' }
+import flammabilityJson from '../data/flammability.json' with { type: 'json' }
 import type {
   BurnOutcome,
   EvidenceType,
@@ -8,7 +8,7 @@ import type {
   FlammabilityDataset,
   HazardType,
   MissionStatus,
-} from './types'
+} from './types.js'
 
 export const findingsDataset = findingsJson as FindingsDataset
 export const findings: Finding[] = findingsDataset.findings

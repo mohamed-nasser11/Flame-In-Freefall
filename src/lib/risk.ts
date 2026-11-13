@@ -1,6 +1,6 @@
-import { assessCoverage, type Coverage } from './coverage'
-import { flammability, getFinding } from './data'
-import type { FlammabilityPoint } from './types'
+import { assessCoverage, type Coverage } from './coverage.js'
+import { flammability, getFinding } from './data.js'
+import type { FlammabilityPoint } from './types.js'
 
 /**
  * Mission Risk Check engine.

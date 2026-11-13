@@ -1,5 +1,5 @@
-import { HAZARD_LABELS, findings, flammability } from './data'
-import type { Finding, FlammabilityLimit } from './types'
+import { HAZARD_LABELS, findings, flammability } from './data.js'
+import type { Finding, FlammabilityLimit } from './types.js'
 
 /**
  * Lexical retrieval over the knowledge base (BM25 with field weights and a small
