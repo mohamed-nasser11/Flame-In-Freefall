@@ -13,7 +13,9 @@ const NAV = [
 export default function Layout() {
   return (
     <div className="relative isolate flex min-h-screen flex-col">
-      <OrbitBackdrop />
+      <div className="no-print">
+        <OrbitBackdrop />
+      </div>
       <header className="no-print sticky top-0 z-20 border-b border-slate-800 bg-space-950/80 backdrop-blur">
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-8 gap-y-2 px-4 py-3 sm:px-6">
           <NavLink to="/" className="flex items-center gap-2">

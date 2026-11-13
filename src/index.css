@@ -56,6 +56,10 @@ body {
   @apply btn border border-space-600 text-slate-200 hover:bg-space-700;
 }
 
+@utility input {
+  @apply w-full rounded-lg border border-slate-700 bg-slate-950/70 px-3 py-2 text-sm text-slate-100 focus:border-cyan-500 focus:outline-none;
+}
+
 @utility label {
   @apply text-xs font-medium uppercase tracking-wider text-slate-400;
 }
@@ -77,5 +81,32 @@ input[type='range'] {
 
   .no-print {
     display: none !important;
+  }
+
+  *,
+  *::before,
+  *::after {
+    color: #111 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    backdrop-filter: none !important;
+  }
+
+  .panel,
+  .evidence-item {
+    border-color: #cfd4dc !important;
+    break-inside: avoid;
+  }
+
+  details > summary {
+    display: none;
+  }
+
+  details:not([open]) > *:not(summary) {
+    display: block !important;
+  }
+
+  a[href^='http']::after {
+    content: '';
   }
 }
