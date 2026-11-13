@@ -1,0 +1,658 @@
+{
+  "dataset": "Flame in Freefall - NASA microgravity fire safety findings",
+  "version": "1.0",
+  "date": "2026-11-13",
+  "notes": "Each finding is extracted from the listed NASA source. evidence_type tells whether it is a measured result, an objective, or a hypothesis. safety_score is 1-5 (team judgment) with score_reason.",
+  "hazard_types": [
+    "ignition",
+    "flame_spread",
+    "material_flammability",
+    "extinguishment",
+    "smoke_detection",
+    "method"
+  ],
+  "findings": [
+    {
+      "id": "F01",
+      "experiment": "SAFFIRE-I",
+      "psi_id": "PSI-98",
+      "hazard_type": "flame_spread",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "A large cotton-fiberglass fabric sample (40.6 x 94 cm) burned completely in microgravity with an average flame spread rate of 1.8 mm/s and an estimated flame power of 1200 +/- 300 W.",
+      "conditions": "Uncrewed Cygnus vehicle after leaving ISS; 20 cm/s concurrent air flow; ~21.5% O2; burn time 420 s",
+      "safety_implication": "A realistic-size cabin fire can sustain itself and release kilowatt-level heat in microgravity, so it must be detected and fought early.",
+      "safety_score": 5,
+      "score_reason": "First full-scale spacecraft fire data; directly sets the size of the hazard.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (Urban et al., NASA GRC, 2017)",
+        "file": "20180005168.pdf",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "location": "Backup slides: Saffire 1 video summary and Table 1"
+      }
+    },
+    {
+      "id": "F02",
+      "experiment": "SAFFIRE-I / SAFFIRE-III",
+      "psi_id": "PSI-98, PSI-100",
+      "hazard_type": "flame_spread",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Flame spread speed was proportional to the air flow velocity: Saffire-I (20 cm/s) burned for about 400 s, Saffire-III (25 cm/s) for about 320 s on the same sample size.",
+      "conditions": "Large cotton-fiberglass samples, concurrent flow 20 vs 25 cm/s",
+      "safety_implication": "Cabin ventilation speed directly controls how fast a fire grows; shutting down ventilation is a key first response.",
+      "safety_score": 5,
+      "score_reason": "Links a controllable spacecraft system (ventilation) to fire growth.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (Urban et al., NASA GRC, 2017)",
+        "file": "20180005168.pdf",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "location": "Slide 'Saffire-I and III Results'"
+      }
+    },
+    {
+      "id": "F03",
+      "experiment": "SAFFIRE-I / SAFFIRE-III",
+      "psi_id": "PSI-98, PSI-100",
+      "hazard_type": "flame_spread",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Flame spread over a large thin charring surface in low gravity reached a steady spread rate, unlike normal gravity where the same samples showed accelerating spread.",
+      "conditions": "Cotton-fiberglass fabric; concurrent flow",
+      "safety_implication": "Fire growth models built from Earth tests do not describe spacecraft fires; low-g data is needed for design.",
+      "safety_score": 4,
+      "score_reason": "Shows Earth intuition about fire growth does not transfer.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (Urban et al., NASA GRC, 2017)",
+        "file": "20180005168.pdf",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "location": "Slide 'Saffire-I-III Results' and Table 1 (1-g column)"
+      }
+    },
+    {
+      "id": "F04",
+      "experiment": "SAFFIRE-I / SAFFIRE-III",
+      "psi_id": "PSI-98, PSI-100",
+      "hazard_type": "flame_spread",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Concurrent (with-the-wind) flame spread was more sensitive to the flow duct dimensions than previously anticipated.",
+      "conditions": "Large-scale samples inside the Saffire flow duct",
+      "safety_implication": "The geometry of the enclosed space (module, rack, duct) changes fire behavior; small-scale tests may underestimate risk.",
+      "safety_score": 4,
+      "score_reason": "Affects how test results scale to real vehicle volumes.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (Urban et al., NASA GRC, 2017)",
+        "file": "20180005168.pdf",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "location": "Slides 'Saffire-I-III Results' and 'Forward Steps'"
+      }
+    },
+    {
+      "id": "F05",
+      "experiment": "SAFFIRE-II",
+      "psi_id": "PSI-99",
+      "hazard_type": "material_flammability",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Silicone samples (0.27 to 1.03 mm thick) showed insignificant burning, while 5 cm wide cotton-fiberglass samples burned completely at 2.1 mm/s (20 cm/s flow) and 2.6 mm/s (25 cm/s flow).",
+      "conditions": "Cygnus vehicle; ~22.1% O2; 5 x 29 cm samples (NASA-STD-6001 Test 1 size)",
+      "safety_implication": "Material choice matters: some cabin materials resist burning in low-g at cabin oxygen, while common fabrics burn fully.",
+      "safety_score": 4,
+      "score_reason": "Direct material-level comparison under realistic oxygen levels.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (Urban et al., NASA GRC, 2017)",
+        "file": "20180005168.pdf",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "location": "Backup Table 1, samples II-1 to II-6"
+      }
+    },
+    {
+      "id": "F06",
+      "experiment": "SAFFIRE-II",
+      "psi_id": "PSI-99",
+      "hazard_type": "material_flammability",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "A Nomex fabric sample ignited by a PMMA starter showed essentially no flame spread on the Nomex.",
+      "conditions": "~22.1% O2; 20 cm/s concurrent flow",
+      "safety_implication": "Nomex is a good candidate for cabin fabrics at near-air oxygen levels.",
+      "safety_score": 3,
+      "score_reason": "Single sample; supports BASS material results.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (Urban et al., NASA GRC, 2017)",
+        "file": "20180005168.pdf",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "location": "Backup Table 1, sample II-7"
+      }
+    },
+    {
+      "id": "F07",
+      "experiment": "SAFFIRE (program)",
+      "psi_id": "PSI-98, PSI-99, PSI-100",
+      "hazard_type": "method",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Large-scale fire experiments can be conducted safely inside an uncrewed spacecraft after it leaves the ISS.",
+      "conditions": "Cygnus resupply vehicles OA-5, OA-6, OA-7 (2016-2017)",
+      "safety_implication": "Provides a safe way to keep testing realistic fires, detection and cleanup for future vehicles.",
+      "safety_score": 2,
+      "score_reason": "Methodology, not a direct crew-safety rule.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (Urban et al., NASA GRC, 2017)",
+        "file": "20180005168.pdf",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "location": "Slide 'Saffire-I-III Results'"
+      }
+    },
+    {
+      "id": "F08",
+      "experiment": "SAFFIRE-II",
+      "psi_id": "PSI-99",
+      "hazard_type": "material_flammability",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Objective: compare low-gravity flammability limits with NASA's normal-gravity material screening test using same-size samples (5 x 29 cm).",
+      "conditions": "9 samples on one sample card",
+      "safety_implication": "Tests whether Earth-based material certification is safe enough for space.",
+      "safety_score": 3,
+      "score_reason": "Objective statement; results are in the Saffire report.",
+      "evidence_type": "objective",
+      "source": {
+        "title": "SAFFIRE-II DoD (PSI-99 Science Documents)",
+        "file": "SAFFIRE-II DoD.docx",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-99",
+        "location": "Opening paragraph"
+      }
+    },
+    {
+      "id": "F09",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "hazard_type": "material_flammability",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "BASS results indicate that NASA-STD-6001 Test 1 (the standard Earth flammability screening test) is not conservative: materials can burn at lower oxygen levels in microgravity than on Earth.",
+      "conditions": "ISS Microgravity Science Glovebox; 17 to 21.5% O2; forced air flow",
+      "safety_implication": "Materials certified as safe on Earth may still burn in a spacecraft; oxygen limits need extra margin.",
+      "safety_score": 5,
+      "score_reason": "Challenges the main material certification method used for spacecraft.",
+      "evidence_type": "result",
+      "source": {
+        "title": "A Researcher's Guide to: Combustion Science (NASA ISS Program Science Office, 2015)",
+        "file": "ISS_Researchers_Guide_Combustion_Science.pdf",
+        "url": "https://www.nasa.gov/sites/default/files/atoms/files/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+        "location": "Section 'Highlights and Lessons Learned' (p. 31)"
+      }
+    },
+    {
+      "id": "F10",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "hazard_type": "extinguishment",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Local application of a nitrogen suppressant jet was not adequate to extinguish flames: the jet entrains air and can sustain or even strengthen the flame, even with the ambient airflow turned off.",
+      "conditions": "Nitrogen jet applied to burning solid samples on ISS",
+      "safety_implication": "Extinguisher technique from Earth (aim at the base of the flame) may fail or make a fire worse in microgravity.",
+      "safety_score": 5,
+      "score_reason": "Directly affects how crews should fight fires.",
+      "evidence_type": "result",
+      "source": {
+        "title": "A Researcher's Guide to: Combustion Science (NASA ISS Program Science Office, 2015)",
+        "file": "ISS_Researchers_Guide_Combustion_Science.pdf",
+        "url": "https://www.nasa.gov/sites/default/files/atoms/files/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+        "location": "BASS section (p. 21-22) and p. 31"
+      }
+    },
+    {
+      "id": "F11",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "hazard_type": "flame_spread",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "In opposed flow, flames over thin fabric quickly reached a steady spread rate, and the spread rate was fastest at an intermediate flow speed.",
+      "conditions": "2 cm wide cotton-fiberglass fabric; flow stepped from 10 cm/s down to about 1 cm/s",
+      "safety_implication": "There is a 'worst-case' ventilation speed for fire spread; it should be avoided or accounted for in design.",
+      "safety_score": 4,
+      "score_reason": "Quantifies how ventilation affects spread.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity (Ferkul et al., 8th US National Combustion Meeting, 2013; PSI-26)",
+        "file": "US National Meeting-070HE-0218-Final.docx",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "location": "Conclusions"
+      }
+    },
+    {
+      "id": "F12",
+      "experiment": "General (BASS and earlier work)",
+      "psi_id": "PSI-26",
+      "hazard_type": "flame_spread",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "The minimum oxygen needed for flames over solids occurs at a flow speed on the order of 10 cm/s, which also matches the maximum flame spread rate and is typical of spacecraft ventilation.",
+      "conditions": "Low-speed forced flow in microgravity",
+      "safety_implication": "Normal spacecraft ventilation speeds are close to the most dangerous condition for fire.",
+      "safety_score": 5,
+      "score_reason": "Ties the most dangerous condition to everyday cabin operation.",
+      "evidence_type": "result",
+      "source": {
+        "title": "A Researcher's Guide to: Combustion Science (NASA ISS Program Science Office, 2015)",
+        "file": "ISS_Researchers_Guide_Combustion_Science.pdf",
+        "url": "https://www.nasa.gov/sites/default/files/atoms/files/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+        "location": "Section 'Low-Stretch (Low-Velocity) Flames' (p. 31)"
+      }
+    },
+    {
+      "id": "F13",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "hazard_type": "extinguishment",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "In concurrent flow, flame spread rate increased linearly with flow speed, and the flame went out (quenching extinction) when the flow was reduced to about 1 cm/s.",
+      "conditions": "Thin cotton-fiberglass fabric; ISS",
+      "safety_implication": "Turning off ventilation can starve and extinguish some fires.",
+      "safety_score": 5,
+      "score_reason": "Gives a concrete, actionable response.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity (Ferkul et al., 8th US National Combustion Meeting, 2013; PSI-26)",
+        "file": "US National Meeting-070HE-0218-Final.docx",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "location": "Conclusions"
+      }
+    },
+    {
+      "id": "F14",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "hazard_type": "flame_spread",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "In microgravity with forced flow, a flame spread steadily against the airflow (opposed flow), while in normal gravity the same downward/opposed configuration self-extinguishes.",
+      "conditions": "~10 cm/s flow; thin fabric",
+      "safety_implication": "Some materials are more flammable in space than Earth tests suggest.",
+      "safety_score": 4,
+      "score_reason": "Shows enhanced flammability in microgravity.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment (Ferkul et al., 2013)",
+        "file": "20140011099.pdf",
+        "url": "https://ntrs.nasa.gov/citations/20140011099",
+        "location": "Slide 'Comparison of 0-g and 1-g Opposed Flow Flames'"
+      }
+    },
+    {
+      "id": "F15",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "hazard_type": "flame_spread",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "At about 10 cm/s, concurrent flame spread (2.55 mm/s) was about twice as fast as opposed flame spread (1.21 mm/s).",
+      "conditions": "Thin fabric; ISS",
+      "safety_implication": "A fire grows fastest downstream of the airflow; detectors and crew response should focus downstream.",
+      "safety_score": 3,
+      "score_reason": "Useful number for the chart; narrower applicability.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment (Ferkul et al., 2013)",
+        "file": "20140011099.pdf",
+        "url": "https://ntrs.nasa.gov/citations/20140011099",
+        "location": "Slide 'Concurrent and Opposed Spread at ~10 cm/s'"
+      }
+    },
+    {
+      "id": "F16",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "hazard_type": "material_flammability",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Ultem 1000 film and Nomex HT90-40 fabric did not burn in ISS air (21-22% O2) at flow speeds around 15 cm/s; a Nomex-III sample did burn at 22% O2 and 14 cm/s.",
+      "conditions": "2 cm wide samples; ISS atmosphere",
+      "safety_implication": "Fire-retardant materials differ; Nomex-III is less safe than Nomex HT90-40 at cabin oxygen levels.",
+      "safety_score": 5,
+      "score_reason": "Direct material selection guidance.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment (Ferkul et al., 2013)",
+        "file": "20140011099.pdf",
+        "url": "https://ntrs.nasa.gov/citations/20140011099",
+        "location": "Slides 'Fuels tested' and 'Results: Material Flammability'"
+      }
+    },
+    {
+      "id": "F17",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "hazard_type": "ignition",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "With oxygen reduced from 21% to 17%, flames over a PMMA (acrylic) sphere stayed blue longer, meaning soot formation was delayed.",
+      "conditions": "2 cm PMMA sphere; 12 cm/s flow; nitrogen-diluted air",
+      "safety_implication": "Lower oxygen changes flame appearance, which can affect optical fire detection.",
+      "safety_score": 2,
+      "score_reason": "Mainly scientific/model validation value.",
+      "evidence_type": "result",
+      "source": {
+        "title": "A Researcher's Guide to: Combustion Science (NASA ISS Program Science Office, 2015)",
+        "file": "ISS_Researchers_Guide_Combustion_Science.pdf",
+        "url": "https://www.nasa.gov/sites/default/files/atoms/files/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+        "location": "Figure 11 caption (p. 20)"
+      }
+    },
+    {
+      "id": "F18",
+      "experiment": "General (low-g flammability research)",
+      "psi_id": "PSI-26",
+      "hazard_type": "ignition",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Materials are easier to ignite in low gravity because there is less natural convective cooling of the fuel surface.",
+      "conditions": "Low-flow microgravity or partial gravity",
+      "safety_implication": "Overheated surfaces (electronics, heaters) are a bigger ignition risk in space.",
+      "safety_score": 4,
+      "score_reason": "Relevant to ignition prevention.",
+      "evidence_type": "result",
+      "source": {
+        "title": "A Researcher's Guide to: Combustion Science (NASA ISS Program Science Office, 2015)",
+        "file": "ISS_Researchers_Guide_Combustion_Science.pdf",
+        "url": "https://www.nasa.gov/sites/default/files/atoms/files/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+        "location": "Section 'Solid-Fuel Combustion/Material Flammability' (p. 18)"
+      }
+    },
+    {
+      "id": "F19",
+      "experiment": "General (low-g flammability research)",
+      "psi_id": "PSI-26",
+      "hazard_type": "flame_spread",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "At low flow speeds, flames can spread upstream into the oncoming airflow, the opposite of normal gravity where flames spread downstream with buoyant flow.",
+      "conditions": "Thin fuel ignited mid-sample; low forced flow",
+      "safety_implication": "Fire can move in unexpected directions; Earth-based assumptions about fire direction do not hold.",
+      "safety_score": 4,
+      "score_reason": "Changes how crews anticipate fire movement.",
+      "evidence_type": "result",
+      "source": {
+        "title": "A Researcher's Guide to: Combustion Science (NASA ISS Program Science Office, 2015)",
+        "file": "ISS_Researchers_Guide_Combustion_Science.pdf",
+        "url": "https://www.nasa.gov/sites/default/files/atoms/files/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+        "location": "Section 'Solid-Fuel Combustion/Material Flammability' (p. 18) and p. 31"
+      }
+    },
+    {
+      "id": "F20",
+      "experiment": "General (low-g flammability research)",
+      "psi_id": "PSI-26",
+      "hazard_type": "ignition",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Radiant heat strongly affects flammability: surface radiative heat loss reduces flammability, but an external radiative heat flux can make materials ignite and spread faster.",
+      "conditions": "Microgravity solid-fuel tests",
+      "safety_implication": "Nearby hot surfaces or an existing fire can make other materials ignite more easily.",
+      "safety_score": 3,
+      "score_reason": "Important but qualitative.",
+      "evidence_type": "result",
+      "source": {
+        "title": "A Researcher's Guide to: Combustion Science (NASA ISS Program Science Office, 2015)",
+        "file": "ISS_Researchers_Guide_Combustion_Science.pdf",
+        "url": "https://www.nasa.gov/sites/default/files/atoms/files/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+        "location": "Section 'Solid-Fuel Combustion/Material Flammability' (p. 18)"
+      }
+    },
+    {
+      "id": "F21",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "hazard_type": "extinguishment",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "The flammability limit of liquid fuels with inert-gas suppressants is lower in reduced gravity, so terrestrial standards for inert-gas suppressants do not give the same safety margin in low gravity.",
+      "conditions": "Heptane and methanol droplets in O2/N2 mixed with CO2, He or Xe; ISS Combustion Integrated Rack",
+      "safety_implication": "Suppressant concentrations designed on Earth may be insufficient in space.",
+      "safety_score": 5,
+      "score_reason": "Directly affects fire suppression system design.",
+      "evidence_type": "result",
+      "source": {
+        "title": "A Researcher's Guide to: Combustion Science (NASA ISS Program Science Office, 2015)",
+        "file": "ISS_Researchers_Guide_Combustion_Science.pdf",
+        "url": "https://www.nasa.gov/sites/default/files/atoms/files/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+        "location": "FLEX section (p. 12)"
+      }
+    },
+    {
+      "id": "F22",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "hazard_type": "extinguishment",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "After the visible flame went out, some droplets continued burning as an invisible 'cool flame' before final extinction.",
+      "conditions": "Large heptane droplets; ISS",
+      "safety_implication": "A fire can look extinguished while still reacting; crews and sensors should confirm full extinction.",
+      "safety_score": 4,
+      "score_reason": "Hidden-hazard insight unique to microgravity research.",
+      "evidence_type": "result",
+      "source": {
+        "title": "A Researcher's Guide to: Combustion Science (NASA ISS Program Science Office, 2015)",
+        "file": "ISS_Researchers_Guide_Combustion_Science.pdf",
+        "url": "https://www.nasa.gov/sites/default/files/atoms/files/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+        "location": "FLEX section (p. 12-13)"
+      }
+    },
+    {
+      "id": "F23",
+      "experiment": "FLEX-2",
+      "psi_id": "PSI-68",
+      "hazard_type": "extinguishment",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Objective: extend FLEX to fuel mixtures, real fuel surrogates, soot formation, slow convective flow effects and droplet-droplet interactions.",
+      "conditions": "Droplet combustion on ISS",
+      "safety_implication": "Improves models of how practical liquid fuels burn and go out in space.",
+      "safety_score": 2,
+      "score_reason": "Objective statement; no safety result extracted yet.",
+      "evidence_type": "objective",
+      "source": {
+        "title": "A Researcher's Guide to: Combustion Science (NASA ISS Program Science Office, 2015)",
+        "file": "ISS_Researchers_Guide_Combustion_Science.pdf",
+        "url": "https://www.nasa.gov/sites/default/files/atoms/files/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+        "location": "FLEX section (p. 13)"
+      }
+    },
+    {
+      "id": "F24",
+      "experiment": "SAME",
+      "psi_id": "PSI-102",
+      "hazard_type": "smoke_detection",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "For the materials tested (cellulose, Kapton, silicone rubber, Teflon), a substantial portion of the smoke particles from overheating was below 500 nm in diameter.",
+      "conditions": "Samples heated below ignition (pre-fire overheat); ISS Microgravity Science Glovebox, Expedition 15",
+      "safety_implication": "Smoke detectors must be sensitive to very small particles; ionization-type detection handles sub-micron smoke better.",
+      "safety_score": 5,
+      "score_reason": "Sets design requirements for spacecraft smoke detectors.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Smoke Aerosol Measurement Experiment (SAME) Final Report (Urban et al., 2010; PSI-102)",
+        "file": "SAME Final Science report  03 18 10 with papers attached.pdf",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+        "location": "Abstract and Conclusions"
+      }
+    },
+    {
+      "id": "F25",
+      "experiment": "SAME",
+      "psi_id": "PSI-102",
+      "hazard_type": "smoke_detection",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Smoke transport in microgravity is dominated by mixing, so detection time lags are longer than in normal gravity.",
+      "conditions": "Smoke transport model based on SAME data",
+      "safety_implication": "Fires may be detected later in space; detectors should be placed close to likely sources and in the ventilation path.",
+      "safety_score": 5,
+      "score_reason": "Directly affects detection timing and placement.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Smoke Aerosol Measurement Experiment (SAME) Final Report (Urban et al., 2010; PSI-102)",
+        "file": "SAME Final Science report  03 18 10 with papers attached.pdf",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+        "location": "Abstract"
+      }
+    },
+    {
+      "id": "F26",
+      "experiment": "SAME",
+      "psi_id": "PSI-102",
+      "hazard_type": "smoke_detection",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Credible pre-fire overheat events can produce broad smoke particle size distributions; detectors that measure more than one property (moment) of the size distribution may perform better.",
+      "conditions": "Combined SAME and Comparative Soot Diagnostics results",
+      "safety_implication": "Next-generation spacecraft detectors should use more than one sensing principle.",
+      "safety_score": 4,
+      "score_reason": "Design recommendation from the researchers.",
+      "evidence_type": "result",
+      "source": {
+        "title": "Smoke Aerosol Measurement Experiment (SAME) Final Report (Urban et al., 2010; PSI-102)",
+        "file": "SAME Final Science report  03 18 10 with papers attached.pdf",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-102",
+        "location": "Conclusions"
+      }
+    },
+    {
+      "id": "F27",
+      "experiment": "SAME-R",
+      "psi_id": "PSI-101",
+      "hazard_type": "smoke_detection",
+      "missions": [
+        "ISS",
+        "Moon",
+        "Mars"
+      ],
+      "finding": "Hypothesis tested: without buoyancy, smoke particles grow larger than on Earth, which could cause some smoke detectors not to alarm.",
+      "conditions": "66 test points on ISS, July-September 2010, including Pyrell fire-retardant foam",
+      "safety_implication": "If confirmed, current detector technology may miss some spacecraft smoke.",
+      "safety_score": 4,
+      "score_reason": "High relevance, but this is the hypothesis; final results are in the SAME-R Final Report (not yet in the dataset).",
+      "evidence_type": "hypothesis",
+      "source": {
+        "title": "PSI-101 SAME-R investigation page (NASA PSI), DOI 10.60555/2np7-jv14",
+        "file": null,
+        "url": "http://doi.org/10.60555/2np7-jv14",
+        "location": "Hypothesis section of PSI-101 page"
+      }
+    },
+    {
+      "id": "F28",
+      "experiment": "ISS operations",
+      "psi_id": "N/A",
+      "hazard_type": "extinguishment",
+      "missions": [
+        "ISS"
+      ],
+      "finding": "Water-mist portable fire extinguishers were developed for spaceflight; the first two of nine were sent to the ISS in December 2015 to replace CO2 units.",
+      "conditions": "ISS fire response equipment",
+      "safety_implication": "Shows how research results are turning into new crew fire response hardware.",
+      "safety_score": 3,
+      "score_reason": "Operational context rather than an experimental result.",
+      "evidence_type": "result",
+      "source": {
+        "title": "A Researcher's Guide to: Combustion Science (NASA ISS Program Science Office, 2015)",
+        "file": "ISS_Researchers_Guide_Combustion_Science.pdf",
+        "url": "https://www.nasa.gov/sites/default/files/atoms/files/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+        "location": "Section 'Ancillary Hardware Developments' (p. 26)"
+      }
+    }
+  ]
+}
