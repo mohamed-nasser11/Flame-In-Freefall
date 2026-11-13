@@ -78,9 +78,17 @@ input[type='range'] {
     margin: 14mm;
   }
 
+  html {
+    font-size: 11px;
+  }
+
   body {
     background: #fff !important;
     color: #111 !important;
+  }
+
+  main > div {
+    padding-top: 0 !important;
   }
 
   .no-print {
@@ -99,6 +107,9 @@ input[type='range'] {
   .panel,
   .evidence-item {
     border-color: #cfd4dc !important;
+  }
+
+  .evidence-item {
     break-inside: avoid;
   }
 

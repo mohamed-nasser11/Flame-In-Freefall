@@ -1,4 +1,4 @@
-import { useMemo, useState, type ReactNode } from 'react'
+import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import EvidenceList from '../components/EvidenceList'
 import FlammabilityMap from '../components/FlammabilityMap'
@@ -58,6 +58,13 @@ export default function RiskCheckPage() {
   const report = useMemo(() => runRiskCheck(submitted), [submitted])
   const visible = showAll ? report.items : report.items.slice(0, 5)
   const dirty = JSON.stringify(draft) !== JSON.stringify(submitted)
+
+  useEffect(() => {
+    // The printed brief should always include every item's evidence.
+    const expand = () => document.querySelectorAll('details').forEach((d) => (d.open = true))
+    window.addEventListener('beforeprint', expand)
+    return () => window.removeEventListener('beforeprint', expand)
+  }, [])
 
   function set<K extends keyof Scenario>(key: K, value: Scenario[K]) {
     setDraft((d) => ({ ...d, [key]: value }))
@@ -318,7 +325,7 @@ function BriefHeader({ report }: { report: ReturnType<typeof runRiskCheck> }) {
 
 function ReviewCard({ item, rank }: { item: ReviewItem; rank: number }) {
   return (
-    <li className="panel break-inside-avoid p-5">
+    <li className="panel p-5">
       <div className="flex flex-wrap items-center gap-2">
         <span className="font-mono text-sm text-slate-500">#{rank}</span>
         <Badge tone={RELEVANCE_TONE[item.relevance]}>{RELEVANCE_LABELS[item.relevance]}</Badge>
