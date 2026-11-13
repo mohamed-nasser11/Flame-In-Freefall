@@ -22,11 +22,22 @@ html {
 }
 
 body {
-  @apply bg-space-900 text-slate-200 font-sans antialiased;
+  @apply bg-space-950 text-slate-200 font-sans antialiased;
+  background-image:
+    radial-gradient(1200px 600px at 85% -10%, rgb(249 115 22 / 0.07), transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, rgb(56 189 248 / 0.06), transparent 60%),
+    linear-gradient(rgb(148 163 184 / 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(148 163 184 / 0.035) 1px, transparent 1px);
+  background-size: auto, auto, 48px 48px, 48px 48px;
+  background-attachment: fixed;
 }
 
 @utility card {
   @apply rounded-xl border border-space-700 bg-space-800/70;
+}
+
+@utility panel {
+  @apply rounded-2xl border border-slate-800 bg-slate-900/60 shadow-[0_1px_0_0_rgb(255_255_255/0.03)_inset] backdrop-blur-sm;
 }
 
 @utility chip {
