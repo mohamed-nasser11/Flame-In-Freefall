@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState, type FormEvent, type ReactNode } from 'react'
+import { Fragment, useEffect, useEffectEvent, useRef, useState, type FormEvent, type ReactNode } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Badge, SectionHeader } from '../components/ui'
 import { MAX_QUESTION_LENGTH, type AskResponse, type ChatTurn, type CitedSource } from '../lib/assistant'
@@ -55,13 +55,17 @@ export default function AskPage() {
     }
   }
 
-  useEffect(() => {
+  const askFromUrl = useEffectEvent(() => {
     const q = params.get('q')
     if (q && !prefilled.current) {
       prefilled.current = true
       setParams({}, { replace: true })
       void ask(q)
     }
+  })
+
+  useEffect(() => {
+    askFromUrl()
   }, [])
 
   useEffect(() => {
@@ -101,7 +105,9 @@ export default function AskPage() {
         {exchanges.map((e, i) => (
           <div key={i} className="space-y-3">
             <div className="flex justify-end">
-              <p className="max-w-[85%] rounded-2xl rounded-br-sm bg-slate-800 px-4 py-2.5 text-sm text-white">{e.question}</p>
+              <p className="max-w-[85%] rounded-2xl rounded-br-sm bg-slate-800 px-4 py-2.5 text-sm text-white">
+                {e.question}
+              </p>
             </div>
             {e.response && <Answer response={e.response} />}
             {e.error && (
@@ -216,7 +222,11 @@ function renderAnswer(text: string, index: Map<string, number>, structured: bool
             className={`label pt-2 ${isInterpretation ? 'text-cyan-300' : /not covered/i.test(title) ? 'text-amber-200' : 'text-ember-300'}`}
           >
             {title}
-            {isInterpretation && structured && <span className="ml-2 normal-case tracking-normal text-slate-500">(model reasoning over the cited records)</span>}
+            {isInterpretation && structured && (
+              <span className="ml-2 normal-case tracking-normal text-slate-500">
+                (model reasoning over the cited records)
+              </span>
+            )}
           </h3>
         )
       }

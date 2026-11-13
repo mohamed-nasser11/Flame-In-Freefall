@@ -153,10 +153,7 @@ function buildIndex(docs: KnowledgeDoc[]) {
   return { indexed, df, avgLength, size: indexed.length }
 }
 
-export const KNOWLEDGE_BASE: KnowledgeDoc[] = [
-  ...findings.map(findingDoc),
-  ...flammability.limits.map(limitDoc),
-]
+export const KNOWLEDGE_BASE: KnowledgeDoc[] = [...findings.map(findingDoc), ...flammability.limits.map(limitDoc)]
 
 const INDEX = buildIndex(KNOWLEDGE_BASE)
 const K1 = 1.2

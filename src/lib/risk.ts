@@ -90,7 +90,10 @@ export function validateScenario(s: Scenario): ValidationError[] {
   const errors: ValidationError[] = []
   const inRange = (v: number, [lo, hi]: readonly [number, number]) => Number.isFinite(v) && v >= lo && v <= hi
   if (!inRange(s.o2Percent, LIMITS.o2Percent)) {
-    errors.push({ field: 'o2Percent', message: `Oxygen must be between ${LIMITS.o2Percent[0]} and ${LIMITS.o2Percent[1]}%.` })
+    errors.push({
+      field: 'o2Percent',
+      message: `Oxygen must be between ${LIMITS.o2Percent[0]} and ${LIMITS.o2Percent[1]}%.`,
+    })
   }
   if (!inRange(s.pressurePsia, LIMITS.pressurePsia)) {
     errors.push({
@@ -99,7 +102,10 @@ export function validateScenario(s: Scenario): ValidationError[] {
     })
   }
   if (!inRange(s.ventMin, LIMITS.vent) || !inRange(s.ventMax, LIMITS.vent)) {
-    errors.push({ field: 'ventMin', message: `Ventilation must be between ${LIMITS.vent[0]} and ${LIMITS.vent[1]} cm/s.` })
+    errors.push({
+      field: 'ventMin',
+      message: `Ventilation must be between ${LIMITS.vent[0]} and ${LIMITS.vent[1]} cm/s.`,
+    })
   } else if (s.ventMin > s.ventMax) {
     errors.push({ field: 'ventMin', message: 'Minimum ventilation cannot be higher than the maximum.' })
   }
@@ -121,7 +127,8 @@ function closestPoint(predicate: (p: FlammabilityPoint) => boolean, o2: number):
 
 function describePoint(p: FlammabilityPoint, s: Scenario) {
   const d = s.o2Percent - p.o2_percent
-  const delta = Math.abs(d) < 0.5 ? 'about the same oxygen' : `${Math.abs(d).toFixed(1)} points ${d > 0 ? 'more' : 'less'} oxygen`
+  const delta =
+    Math.abs(d) < 0.5 ? 'about the same oxygen' : `${Math.abs(d).toFixed(1)} points ${d > 0 ? 'more' : 'less'} oxygen`
   return `Closest test: ${p.experiment}, ${p.material}, ${p.o2_percent}% O2 at ${p.flow_velocity_cm_s} cm/s (${p.outcome.replace(/_/g, ' ')}). Your cabin has ${delta}.`
 }
 
@@ -159,8 +166,10 @@ const RULES: Rule[] = [
         title: 'Ventilation speed controls how fast a fire grows',
         relevance: 'medium',
         factors: [`Ventilation ${s.ventMin}–${s.ventMax} cm/s`],
-        comparison: 'Your ventilation range sits outside the 5–20 cm/s band where NASA reports the lowest oxygen limit and fastest spread.',
-        review: 'Check flame spread at the actual design airflow, including fan transients and local jets near equipment.',
+        comparison:
+          'Your ventilation range sits outside the 5–20 cm/s band where NASA reports the lowest oxygen limit and fastest spread.',
+        review:
+          'Check flame spread at the actual design airflow, including fan transients and local jets near equipment.',
         evidence: [finding('F02'), finding('F13')],
       }
     }
@@ -205,7 +214,8 @@ const RULES: Rule[] = [
       relevance: 'high',
       factors: ['Cotton or cotton-blend fabric selected'],
       comparison: p ? describePoint(p, s) : 'Saffire burned 40 × 94 cm samples at ~21.5% O2.',
-      review: 'Where is cotton-based fabric used, how much of it is there, and can it be replaced or separated from ignition sources?',
+      review:
+        'Where is cotton-based fabric used, how much of it is there, and can it be replaced or separated from ignition sources?',
       evidence: [finding('F01'), finding('F05'), ...(p ? [point(p.id)] : [])],
     }
   },
@@ -266,7 +276,8 @@ const RULES: Rule[] = [
       factors: ['Liquid fuels or lubricants selected'],
       comparison:
         'FLEX droplets kept reacting as an invisible “cool flame” after visible extinction, and inert-gas limits were lower than on Earth.',
-      review: 'How would crews or sensors confirm full extinction of a liquid fire? Are suppressant concentrations derated for microgravity?',
+      review:
+        'How would crews or sensors confirm full extinction of a liquid fire? Are suppressant concentrations derated for microgravity?',
       evidence: [finding('F22'), finding('F21')],
     }
   },
@@ -292,11 +303,16 @@ const RULES: Rule[] = [
           : 'Inert-gas suppression needs more margin in microgravity',
       relevance: s.suppression === 'inert_jet' ? 'high' : 'medium',
       factors: [
-        s.suppression === 'inert_jet' ? 'Directed inert-gas (e.g. N2) jet' : s.suppression === 'co2' ? 'CO2 extinguishers' : 'Suppression not specified',
+        s.suppression === 'inert_jet'
+          ? 'Directed inert-gas (e.g. N2) jet'
+          : s.suppression === 'co2'
+            ? 'CO2 extinguishers'
+            : 'Suppression not specified',
       ],
       comparison:
         'In BASS a nitrogen jet entrained air and could sustain or strengthen the flame. FLEX found inert-gas flammability limits lower in microgravity than Earth standards assume.',
-      review: 'Is the suppressant concentration derated for microgravity, and is the discharge method validated against a burning solid?',
+      review:
+        'Is the suppressant concentration derated for microgravity, and is the discharge method validated against a burning solid?',
       evidence: [finding('F10'), finding('F21'), finding('F28')],
     }
   },
@@ -307,11 +323,16 @@ const RULES: Rule[] = [
     title: 'Smoke reaches detectors later and with smaller particles in microgravity',
     relevance: s.detection === 'multi' ? 'medium' : 'high',
     factors: [
-      s.detection === 'single' ? 'Single-principle smoke detection' : s.detection === 'multi' ? 'Multi-sensor detection' : 'Detection not specified',
+      s.detection === 'single'
+        ? 'Single-principle smoke detection'
+        : s.detection === 'multi'
+          ? 'Multi-sensor detection'
+          : 'Detection not specified',
     ],
     comparison:
       'SAME found much of the pre-fire smoke below 500 nm and longer transport lags than in normal gravity; detectors measuring more than one property performed better.',
-    review: 'Are detectors placed near likely sources and in the ventilation path, and are they sensitive to sub-micron particles?',
+    review:
+      'Are detectors placed near likely sources and in the ventilation path, and are they sensitive to sub-micron particles?',
     evidence: [finding('F24'), finding('F25'), finding('F26'), finding('F27')],
   }),
 
@@ -345,7 +366,8 @@ const RULES: Rule[] = [
     title: 'A realistic-size fire releases about a kilowatt and depends on enclosure geometry',
     relevance: 'medium',
     factors: ['Applies to every crewed cabin'],
-    comparison: 'Saffire-I measured about 1200 W from one large fabric sample, and spread was more sensitive to duct size than expected.',
+    comparison:
+      'Saffire-I measured about 1200 W from one large fabric sample, and spread was more sensitive to duct size than expected.',
     review: 'Do cabin fire scenarios use large-scale data rather than small coupon tests?',
     evidence: [finding('F01'), finding('F04'), finding('F03')],
   }),
@@ -356,7 +378,8 @@ const RULES: Rule[] = [
     title: 'Overheated surfaces ignite materials more easily without buoyant cooling',
     relevance: 'low',
     factors: ['Applies to every cabin with electronics or heaters'],
-    comparison: 'NASA notes less convective cooling in low gravity and a strong effect of external radiant heat on ignition.',
+    comparison:
+      'NASA notes less convective cooling in low gravity and a strong effect of external radiant heat on ignition.',
     review: 'Are hot surfaces and electronics separated from flammable materials and monitored for overheat?',
     evidence: [finding('F18'), finding('F20')],
   }),

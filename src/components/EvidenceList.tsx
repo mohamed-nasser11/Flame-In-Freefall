@@ -12,7 +12,7 @@ interface ResolvedEvidence {
   qualifier?: string
 }
 
-export function resolveEvidence(ref: EvidenceRef): ResolvedEvidence | null {
+function resolveEvidence(ref: EvidenceRef): ResolvedEvidence | null {
   if (ref.kind === 'finding') {
     const f = getFinding(ref.id)
     if (!f) return null
@@ -62,10 +62,17 @@ export default function EvidenceList({ refs }: { refs: EvidenceRef[] }) {
               <span className="font-mono text-slate-400">{e.id}</span>
             )}
             <span className="text-slate-400">{e.label}</span>
-            {e.qualifier && <span className="rounded bg-amber-400/10 px-1.5 text-[10px] text-amber-200">{e.qualifier}</span>}
+            {e.qualifier && (
+              <span className="rounded bg-amber-400/10 px-1.5 text-[10px] text-amber-200">{e.qualifier}</span>
+            )}
           </div>
           <p className="mt-1 text-slate-300">{e.text}</p>
-          <a href={e.source.url} target="_blank" rel="noreferrer" className="mt-1 block truncate text-[11px] text-slate-500 hover:text-cyan-300">
+          <a
+            href={e.source.url}
+            target="_blank"
+            rel="noreferrer"
+            className="mt-1 block truncate text-[11px] text-slate-500 hover:text-cyan-300"
+          >
             {e.source.title} ↗
           </a>
         </li>

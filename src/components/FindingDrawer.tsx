@@ -22,15 +22,25 @@ export default function FindingDrawer({ finding: f, onClose }: { finding: Findin
 
   return (
     <div className="fixed inset-0 z-40 flex justify-end" role="dialog" aria-modal="true" aria-labelledby="drawer-title">
-      <button aria-label="Close details" className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm" onClick={onClose} />
+      <button
+        aria-label="Close details"
+        className="absolute inset-0 bg-slate-950/70 backdrop-blur-sm"
+        onClick={onClose}
+      />
       <div className="relative h-full w-full max-w-xl overflow-y-auto border-l border-slate-800 bg-slate-950 p-6 shadow-2xl">
         <div className="flex items-start justify-between gap-4">
           <div className="flex flex-wrap items-center gap-2">
             <span className="font-mono text-xs text-slate-500">{f.id}</span>
             <Badge tone="ember">{HAZARD_LABELS[f.hazard_type]}</Badge>
-            <Badge tone={f.evidence_type === 'result' ? 'neutral' : 'amber'}>{EVIDENCE_LABELS[f.evidence_type].label}</Badge>
+            <Badge tone={f.evidence_type === 'result' ? 'neutral' : 'amber'}>
+              {EVIDENCE_LABELS[f.evidence_type].label}
+            </Badge>
           </div>
-          <button ref={closeRef} onClick={onClose} className="rounded-md px-2 py-1 text-sm text-slate-400 hover:bg-slate-800 hover:text-white">
+          <button
+            ref={closeRef}
+            onClick={onClose}
+            className="rounded-md px-2 py-1 text-sm text-slate-400 hover:bg-slate-800 hover:text-white"
+          >
             Close
           </button>
         </div>
@@ -95,7 +105,10 @@ export default function FindingDrawer({ finding: f, onClose }: { finding: Findin
         </section>
 
         <div className="mt-8 flex flex-wrap gap-3">
-          <Link to={`/ask?q=${encodeURIComponent(`Explain finding ${f.id} and what it means for cabin design`)}`} className="btn-ghost">
+          <Link
+            to={`/ask?q=${encodeURIComponent(`Explain finding ${f.id} and what it means for cabin design`)}`}
+            className="btn-ghost"
+          >
             Ask EMBER about this
           </Link>
           {mapPoints.length > 0 && (

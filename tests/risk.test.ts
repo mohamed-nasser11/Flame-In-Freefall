@@ -71,7 +71,11 @@ describe('runRiskCheck', () => {
   it('only cites evidence that exists', () => {
     const limitIds = new Set(flammability.limits.map((l) => l.id))
     const pointIds = new Set(flammability.points.map((p) => p.id))
-    for (const s of [iss, exploration, { ...iss, materials: ['pmma', 'nomex_iii', 'liquid', 'ultem', 'silicone'] } as Scenario]) {
+    for (const s of [
+      iss,
+      exploration,
+      { ...iss, materials: ['pmma', 'nomex_iii', 'liquid', 'ultem', 'silicone'] } as Scenario,
+    ]) {
       for (const item of runRiskCheck(s).items) {
         expect(item.evidence.length).toBeGreaterThan(0)
         for (const e of item.evidence) {

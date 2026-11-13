@@ -30,18 +30,23 @@ const GAPS: Gap[] = [
   {
     id: 'mars',
     title: 'Fire in a Mars habitat (0.38 g)',
-    known: 'No NASA Mars habitat atmosphere baseline was found; EMBER uses the 8.2 psia / 34% O2 exploration atmosphere as an assumption.',
+    known:
+      'No NASA Mars habitat atmosphere baseline was found; EMBER uses the 8.2 psia / 34% O2 exploration atmosphere as an assumption.',
     missing: 'Neither the gravity level nor the atmosphere has any matching flight test.',
     why: 'Buoyancy at 0.38 g adds about 15 cm/s of induced flow, so the ISS response of shutting down fans may not starve a fire.',
     next: 'Combine partial-gravity tests with the planned habitat atmosphere before the Mars cabin material list is fixed.',
-    evidence: [{ id: 'LIM-FAN-OFF', kind: 'limit' }, { id: 'F13', kind: 'finding' }],
+    evidence: [
+      { id: 'LIM-FAN-OFF', kind: 'limit' },
+      { id: 'F13', kind: 'finding' },
+    ],
   },
   {
     id: 'exploration-atmosphere',
     title: 'The 34% oxygen, 8.2 psia exploration atmosphere',
     known:
       'NASA is studying 8.2 psia / 34% O2 for Artemis-era habitats to shorten spacewalk pre-breathe. Solid-material flight tests in EMBER cover 13.6–22.2% O2 at about 1 atm.',
-    missing: 'No solid-material microgravity test at 34% O2 or at 8.2 psia. The nearest data are FLEX liquid droplets at 30–34% O2 and about 0.7 atm.',
+    missing:
+      'No solid-material microgravity test at 34% O2 or at 8.2 psia. The nearest data are FLEX liquid droplets at 30–34% O2 and about 0.7 atm.',
     why: 'Materials already burn at 1–2.4 points lower oxygen in microgravity than in Earth tests, so a cabin twelve points above the tested range has no direct evidence.',
     next: 'Repeat Saffire-style large-sample tests in the exploration atmosphere for the materials planned for Artemis habitats.',
     evidence: [
@@ -54,7 +59,8 @@ const GAPS: Gap[] = [
     id: 'smoke-growth',
     title: 'Do smoke particles grow too large for detectors?',
     known: 'SAME showed much pre-fire smoke is below 500 nm and that detection lags are longer than on Earth.',
-    missing: 'SAME-R was designed to test whether particles grow larger without buoyancy. Our sources state the hypothesis but not its result.',
+    missing:
+      'SAME-R was designed to test whether particles grow larger without buoyancy. Our sources state the hypothesis but not its result.',
     why: 'If confirmed, some current detector types could fail to alarm in a spacecraft.',
     next: 'Add the published SAME-R results to the knowledge base and compare them with detector response curves.',
     evidence: [
@@ -81,7 +87,8 @@ const GAPS: Gap[] = [
   {
     id: 'aging',
     title: 'Materials after years in space',
-    known: 'BASS and Saffire compared fabrics and films side by side, but none of the records describe the age or exposure history of the samples.',
+    known:
+      'BASS and Saffire compared fabrics and films side by side, but none of the records describe the age or exposure history of the samples.',
     missing: 'No record covers how radiation, outgassing or wear over a multi-year mission change flammability.',
     why: 'Mars missions will rely on the same cabin materials for years without resupply.',
     next: 'Return aged samples from long-duration ISS hardware and repeat BASS-style flammability tests.',
@@ -98,7 +105,10 @@ const MATRIX: { gravity: string; cells: Cell[] }[] = [
 ]
 const ATMOSPHERES = ['21% O2 · 14.7 psia', '26.5% O2 · 10.2 psia', '30–34% O2 · 10.3 psia', '34% O2 · 8.2 psia']
 const CELL: Record<Cell, { label: string; className: string }> = {
-  solid: { label: 'Solid-material flight tests', className: 'bg-emerald-400/15 text-emerald-200 border-emerald-400/30' },
+  solid: {
+    label: 'Solid-material flight tests',
+    className: 'bg-emerald-400/15 text-emerald-200 border-emerald-400/30',
+  },
   droplet: { label: 'Liquid droplets only', className: 'bg-amber-400/10 text-amber-200 border-amber-400/30' },
   none: { label: 'No flight data', className: 'bg-red-500/10 text-red-200/80 border-red-400/20' },
 }
@@ -138,8 +148,8 @@ export default function GapsPage() {
           </tbody>
         </table>
         <p className="mt-3 text-[11px] text-slate-500">
-          Built from the flight test conditions in EMBER’s flammability data set. ISS cabin air is the only atmosphere with
-          solid-material evidence.
+          Built from the flight test conditions in EMBER’s flammability data set. ISS cabin air is the only atmosphere
+          with solid-material evidence.
         </p>
       </Panel>
 
@@ -169,7 +179,9 @@ export default function GapsPage() {
               <InterpretationNote label="Proposed next experiment (team suggestion)">{g.next}</InterpretationNote>
             </div>
             <details className="mt-4">
-              <summary className="cursor-pointer text-xs font-medium text-cyan-300">Related evidence ({g.evidence.length})</summary>
+              <summary className="cursor-pointer text-xs font-medium text-cyan-300">
+                Related evidence ({g.evidence.length})
+              </summary>
               <div className="mt-3">
                 <EvidenceList refs={g.evidence} />
               </div>

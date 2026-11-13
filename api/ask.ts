@@ -35,7 +35,10 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(405).json({ error: 'Method not allowed.' })
   }
 
-  const ip = String(req.headers['x-forwarded-for'] ?? '').split(',')[0].trim() || 'unknown'
+  const ip =
+    String(req.headers['x-forwarded-for'] ?? '')
+      .split(',')[0]
+      .trim() || 'unknown'
   if (rateLimited(ip)) {
     return res.status(429).json({ error: 'Too many questions in a short time. Please wait a minute.' })
   }
@@ -55,7 +58,12 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     log('ask.fallback', { reason: 'no_api_key' })
     return res
       .status(200)
-      .json(retrievalOnlyResponse(hits, 'The AI assistant is not configured, so these are the closest records from the knowledge base.'))
+      .json(
+        retrievalOnlyResponse(
+          hits,
+          'The AI assistant is not configured, so these are the closest records from the knowledge base.',
+        ),
+      )
   }
 
   const started = Date.now()
@@ -79,7 +87,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     if (response.stop_reason === 'refusal') {
       log('ask.refusal', { ms: Date.now() - started })
-      return res.status(200).json(retrievalOnlyResponse(hits, 'The assistant could not answer this question, so these are the closest records.'))
+      return res
+        .status(200)
+        .json(
+          retrievalOnlyResponse(
+            hits,
+            'The assistant could not answer this question, so these are the closest records.',
+          ),
+        )
     }
 
     const raw = response.content
@@ -102,13 +117,24 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       sources: cited.map((id) => toCitedSource(byId.get(id)!)),
       ...(dropped.length ? { droppedCitations: dropped } : {}),
     }
-    log('ask.answer', { ms: Date.now() - started, retrieved: hits.length, cited: cited.length, dropped: dropped.length, model: response.model })
+    log('ask.answer', {
+      ms: Date.now() - started,
+      retrieved: hits.length,
+      cited: cited.length,
+      dropped: dropped.length,
+      model: response.model,
+    })
     return res.status(200).json(body)
   } catch (err) {
     const status = err instanceof Anthropic.APIError ? err.status : undefined
     log('ask.error', { status, message: err instanceof Error ? err.message : 'unknown', ms: Date.now() - started })
     return res
       .status(200)
-      .json(retrievalOnlyResponse(hits, 'The AI assistant is unavailable right now, so these are the closest records from the knowledge base.'))
+      .json(
+        retrievalOnlyResponse(
+          hits,
+          'The AI assistant is unavailable right now, so these are the closest records from the knowledge base.',
+        ),
+      )
   }
 }

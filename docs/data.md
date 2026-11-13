@@ -4,26 +4,26 @@
 
 28 findings from nine NASA PSI investigations. Fields:
 
-| Field | Meaning |
-| --- | --- |
-| `id` | Stable id, `F01` to `F28` |
-| `experiment`, `psi_id` | Experiment name(s) and PSI repository id(s) |
-| `hazard_type` | `ignition`, `flame_spread`, `material_flammability`, `extinguishment`, `smoke_detection`, `method` |
-| `missions` | Missions the finding is relevant to (`ISS`, `Moon`, `Mars`) |
-| `finding` | The result in one sentence, as reported |
-| `conditions` | Test conditions from the source |
-| `safety_implication` | The team's interpretation for spacecraft design |
-| `safety_score`, `score_reason` | Team relevance rating 1 to 5 and why; editorial, not a probability |
-| `evidence_type` | `result` (25), `objective` (2) or `hypothesis` (1) |
-| `source` | Title, URL, local file name and location (page, slide or section) |
+| Field                          | Meaning                                                                                            |
+| ------------------------------ | -------------------------------------------------------------------------------------------------- |
+| `id`                           | Stable id, `F01` to `F28`                                                                          |
+| `experiment`, `psi_id`         | Experiment name(s) and PSI repository id(s)                                                        |
+| `hazard_type`                  | `ignition`, `flame_spread`, `material_flammability`, `extinguishment`, `smoke_detection`, `method` |
+| `missions`                     | Missions the finding is relevant to (`ISS`, `Moon`, `Mars`)                                        |
+| `finding`                      | The result in one sentence, as reported                                                            |
+| `conditions`                   | Test conditions from the source                                                                    |
+| `safety_implication`           | The team's interpretation for spacecraft design                                                    |
+| `safety_score`, `score_reason` | Team relevance rating 1 to 5 and why; editorial, not a probability                                 |
+| `evidence_type`                | `result` (25), `objective` (2) or `hypothesis` (1)                                                 |
+| `source`                       | Title, URL, local file name and location (page, slide or section)                                  |
 
 ## flammability.json
 
-| Block | Count | Use |
-| --- | --- | --- |
-| `points` | 72 | Map markers: oxygen, pressure, flow speed and direction, outcome, fuel class, data quality, caveats, source page |
-| `limits` | 9 | Reference values: microgravity and normal-gravity oxygen limits, the model U-curve, material limiting oxygen indices, the fan-off observation |
-| `missions` | 7 | Cabin atmospheres with status (`operational`, `under_study`, `assumption`, ...) and sources |
+| Block      | Count | Use                                                                                                                                           |
+| ---------- | ----- | --------------------------------------------------------------------------------------------------------------------------------------------- |
+| `points`   | 72    | Map markers: oxygen, pressure, flow speed and direction, outcome, fuel class, data quality, caveats, source page                              |
+| `limits`   | 9     | Reference values: microgravity and normal-gravity oxygen limits, the model U-curve, material limiting oxygen indices, the fan-off observation |
+| `missions` | 7     | Cabin atmospheres with status (`operational`, `under_study`, `assumption`, ...) and sources                                                   |
 
 Points by experiment: BASS 21, FLEX 20, BASS-II 18, Saffire 13. Outcomes: burned 47, extinguished 13, did not burn 7, near limit 5.
 

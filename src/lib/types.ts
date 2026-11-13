@@ -1,10 +1,5 @@
 export type HazardType =
-  | 'ignition'
-  | 'flame_spread'
-  | 'material_flammability'
-  | 'extinguishment'
-  | 'smoke_detection'
-  | 'method'
+  'ignition' | 'flame_spread' | 'material_flammability' | 'extinguishment' | 'smoke_detection' | 'method'
 
 export type EvidenceType = 'result' | 'objective' | 'hypothesis'
 
@@ -84,12 +79,7 @@ export interface FlammabilityLimit {
 }
 
 export type MissionStatus =
-  | 'operational'
-  | 'under_study'
-  | 'historical'
-  | 'historical_recommendation'
-  | 'test_condition'
-  | 'assumption'
+  'operational' | 'under_study' | 'historical' | 'historical_recommendation' | 'test_condition' | 'assumption'
 
 export interface MissionAtmosphere {
   id: string

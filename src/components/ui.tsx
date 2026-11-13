@@ -12,7 +12,9 @@ export function SourceLink({ source, compact = false }: { source: SourceRef | Po
     >
       <span className="text-slate-200 group-hover:text-cyan-200">{source.title}</span>
       {!compact && location && <span className="mt-0.5 block text-slate-500">{location}</span>}
-      <span className="mt-1 block truncate font-mono text-[10px] text-cyan-400/80">{source.url.replace(/^https?:\/\//, '')} ↗</span>
+      <span className="mt-1 block truncate font-mono text-[10px] text-cyan-400/80">
+        {source.url.replace(/^https?:\/\//, '')} ↗
+      </span>
     </a>
   )
 }
@@ -30,7 +32,10 @@ export type Tone = keyof typeof TONES
 
 export function Badge({ children, tone = 'neutral', title }: { children: ReactNode; tone?: Tone; title?: string }) {
   return (
-    <span title={title} className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-medium ${TONES[tone]}`}>
+    <span
+      title={title}
+      className={`inline-flex items-center gap-1 rounded-full border px-2 py-0.5 text-[11px] font-medium ${TONES[tone]}`}
+    >
       {children}
     </span>
   )

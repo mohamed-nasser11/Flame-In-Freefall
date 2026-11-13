@@ -168,7 +168,14 @@ export function enforceCitations(answer: string, allowedIds: Set<string>) {
     if (!dropped.includes(id)) dropped.push(id)
     return ''
   })
-  return { text: text.replace(/[ \t]+([.,;])/g, '$1').replace(/[ \t]{2,}/g, ' ').trim(), cited, dropped }
+  return {
+    text: text
+      .replace(/[ \t]+([.,;])/g, '$1')
+      .replace(/[ \t]{2,}/g, ' ')
+      .trim(),
+    cited,
+    dropped,
+  }
 }
 
 /** Answer used when the language model is not configured or fails. */

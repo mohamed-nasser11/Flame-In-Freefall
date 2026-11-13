@@ -22,7 +22,9 @@ describe('validateAskRequest', () => {
   })
 
   it('rejects malformed history and caps its length', () => {
-    expect(validateAskRequest({ question: 'valid question', history: [{ role: 'system', content: 'x' }] }).ok).toBe(false)
+    expect(validateAskRequest({ question: 'valid question', history: [{ role: 'system', content: 'x' }] }).ok).toBe(
+      false,
+    )
     const long = Array.from({ length: 20 }, (_, i) => ({ role: i % 2 ? 'assistant' : 'user', content: 'turn' }))
     const r = validateAskRequest({ question: 'valid question', history: long })
     expect(r.ok && r.value.history?.length).toBe(6)

@@ -61,10 +61,14 @@ export default function ComparePage() {
 
   const warnings: string[] = []
   if (new Set(summaries.flatMap((s) => s.fuelClasses)).size > 1) {
-    warnings.push('These materials were tested as different fuel types (thin fabric or film vs thick rod or slab). Flame spread over thick and thin fuels follows different physics.')
+    warnings.push(
+      'These materials were tested as different fuel types (thin fabric or film vs thick rod or slab). Flame spread over thick and thin fuels follows different physics.',
+    )
   }
   if (new Set(summaries.flatMap((s) => s.directions)).size > 1) {
-    warnings.push('Flow direction differs between tests. Concurrent spread was about twice as fast as opposed spread at the same speed in BASS (F15), so spread rates are not directly comparable.')
+    warnings.push(
+      'Flow direction differs between tests. Concurrent spread was about twice as fast as opposed spread at the same speed in BASS (F15), so spread rates are not directly comparable.',
+    )
   }
   if (new Set(summaries.flatMap((s) => s.experiments)).size > 1) {
     warnings.push('Results come from different experiments with different sample sizes and hardware.')
@@ -73,12 +77,14 @@ export default function ComparePage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       <SectionHeader eyebrow="Explore" title="Compare materials">
-        Put up to three tested materials side by side using the flight data on the flammability map. EMBER flags when the
-        test conditions differ enough that the numbers should not be compared directly.
+        Put up to three tested materials side by side using the flight data on the flammability map. EMBER flags when
+        the test conditions differ enough that the numbers should not be compared directly.
       </SectionHeader>
 
       <Panel className="mt-8 p-5">
-        <p className="label">Materials ({selected.length}/{MAX_SELECTED})</p>
+        <p className="label">
+          Materials ({selected.length}/{MAX_SELECTED})
+        </p>
         <div className="mt-3 flex flex-wrap gap-2">
           {MATERIALS.map((m) => (
             <button
@@ -150,7 +156,11 @@ export default function ComparePage() {
                 )}
                 mono
               />
-              <Row label="Points with caveats" values={summaries.map((s) => `${s.caveats} of ${s.points.length}`)} mono />
+              <Row
+                label="Points with caveats"
+                values={summaries.map((s) => `${s.caveats} of ${s.points.length}`)}
+                mono
+              />
               <tr>
                 <th className="p-3 text-left text-xs font-medium text-slate-400">Sources</th>
                 {summaries.map((s) => (

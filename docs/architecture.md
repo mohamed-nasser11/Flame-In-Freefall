@@ -4,14 +4,14 @@ EMBER is a single-page React application with one serverless function. Everythin
 
 ## Modules
 
-| Path | Responsibility |
-| --- | --- |
-| `src/lib/data.ts` | Loads `findings.json` and `flammability.json`, exposes typed records, labels and derived statistics |
-| `src/lib/search.ts` | BM25 index over findings and reference limits, with field weights and domain synonyms |
-| `src/lib/coverage.ts` | Compares a cabin atmosphere with the tested conditions (`within`, `edge`, `outside`) |
-| `src/lib/risk.ts` | Mission Risk Check rules, validation and ranking |
-| `src/lib/assistant.ts` | Request validation, retrieval for the assistant, evidence block, citation enforcement, fallbacks |
-| `api/ask.ts` | Vercel function: rate limit, call the model, return a structured answer |
+| Path                   | Responsibility                                                                                      |
+| ---------------------- | --------------------------------------------------------------------------------------------------- |
+| `src/lib/data.ts`      | Loads `findings.json` and `flammability.json`, exposes typed records, labels and derived statistics |
+| `src/lib/search.ts`    | BM25 index over findings and reference limits, with field weights and domain synonyms               |
+| `src/lib/coverage.ts`  | Compares a cabin atmosphere with the tested conditions (`within`, `edge`, `outside`)                |
+| `src/lib/risk.ts`      | Mission Risk Check rules, validation and ranking                                                    |
+| `src/lib/assistant.ts` | Request validation, retrieval for the assistant, evidence block, citation enforcement, fallbacks    |
+| `api/ask.ts`           | Vercel function: rate limit, call the model, return a structured answer                             |
 
 `src/lib` has no browser or React dependencies, so the same code runs in the page, in the API function and in the tests.
 
@@ -20,7 +20,7 @@ EMBER is a single-page React application with one serverless function. Everythin
 1. **Validate** the scenario (ranges for oxygen, pressure and ventilation; minimum not above maximum).
 2. **Coverage**: look for solid-material flight tests within 1.5 points of O2 and 15 kPa of pressure. If there are none, the brief says the scenario is outside the tested range.
 3. **Rules**: each rule checks one condition and returns a review item with the factors that triggered it, a comparison with the closest NASA test, a question for the engineering team and its evidence ids.
-4. **Rank**: tier first (*Review first*, *Review*, *Note*), then evidence gaps, then the strongest supporting evidence, then the number of matched factors.
+4. **Rank**: tier first (_Review first_, _Review_, _Note_), then evidence gaps, then the strongest supporting evidence, then the number of matched factors.
 
 The output separates four kinds of statement: documented results (the evidence list), similarity to a test (the comparison), interpretation (the item title and the team's safety notes), and suggested questions for the engineer.
 

@@ -28,7 +28,11 @@ body {
     radial-gradient(900px 500px at -10% 20%, rgb(56 189 248 / 0.06), transparent 60%),
     linear-gradient(rgb(148 163 184 / 0.035) 1px, transparent 1px),
     linear-gradient(90deg, rgb(148 163 184 / 0.035) 1px, transparent 1px);
-  background-size: auto, auto, 48px 48px, 48px 48px;
+  background-size:
+    auto,
+    auto,
+    48px 48px,
+    48px 48px;
   background-attachment: fixed;
 }
 
