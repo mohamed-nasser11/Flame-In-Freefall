@@ -1,7 +1,8 @@
 import { useMemo, useState, type ReactNode } from 'react'
 import { Link } from 'react-router-dom'
 import EvidenceList from '../components/EvidenceList'
-import FlammabilityMap, { shortMissionName } from '../components/FlammabilityMap'
+import FlammabilityMap from '../components/FlammabilityMap'
+import { shortMissionName } from '../components/mapStyles'
 import { Badge, SectionHeader, type Tone } from '../components/ui'
 import { flammability } from '../lib/data'
 import {
@@ -74,13 +75,13 @@ export default function RiskCheckPage() {
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       <div className="no-print">
         <SectionHeader eyebrow="Rank" title="Mission Risk Check">
-          Describe the cabin. EMBER compares it with the conditions NASA tested and lists the fire-safety issues to review
-          first, each with its evidence. Ranking uses fixed, published rules, so the same input always gives the same
-          brief. It is a research aid, not a certification or a probability of fire.
+          Describe the cabin. EMBER compares it with the conditions NASA tested and lists the fire-safety issues to
+          review first, each with its evidence. Ranking uses fixed, published rules, so the same input always gives the
+          same brief. It is a research aid, not a certification or a probability of fire.
         </SectionHeader>
       </div>
 
-      <div className="mt-8 grid gap-8 lg:grid-cols-[340px_minmax(0,1fr)]">
+      <div className="mt-8 grid gap-8 lg:grid-cols-[340px_minmax(0,1fr)] [&>*]:min-w-0">
         <form
           className="no-print panel h-fit space-y-5 p-5 lg:sticky lg:top-20"
           onSubmit={(e) => {
@@ -102,7 +103,9 @@ export default function RiskCheckPage() {
                   onClick={() => choosePreset(m.id)}
                   aria-pressed={presetId === m.id}
                   className={`rounded-md border px-2.5 py-1.5 text-left text-xs ${
-                    presetId === m.id ? 'border-cyan-400/70 bg-cyan-400/10 text-white' : 'border-slate-700 text-slate-400 hover:text-white'
+                    presetId === m.id
+                      ? 'border-cyan-400/70 bg-cyan-400/10 text-white'
+                      : 'border-slate-700 text-slate-400 hover:text-white'
                   }`}
                 >
                   {shortMissionName(m)}
@@ -112,28 +115,49 @@ export default function RiskCheckPage() {
           </fieldset>
 
           <Field label="Scenario name" error={errorFor('name')}>
-            <input
-              value={draft.name}
-              maxLength={80}
-              onChange={(e) => set('name', e.target.value)}
-              className="input"
-            />
+            <input value={draft.name} maxLength={80} onChange={(e) => set('name', e.target.value)} className="input" />
           </Field>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 [&>*]:min-w-0">
             <Field label="Oxygen (%)" error={errorFor('o2Percent')}>
-              <NumberInput value={draft.o2Percent} min={LIMITS.o2Percent[0]} max={LIMITS.o2Percent[1]} step={0.5} onChange={(v) => set('o2Percent', v)} />
+              <NumberInput
+                value={draft.o2Percent}
+                min={LIMITS.o2Percent[0]}
+                max={LIMITS.o2Percent[1]}
+                step={0.5}
+                onChange={(v) => set('o2Percent', v)}
+              />
             </Field>
             <Field label="Pressure (psia)" error={errorFor('pressurePsia')}>
-              <NumberInput value={draft.pressurePsia} min={LIMITS.pressurePsia[0]} max={LIMITS.pressurePsia[1]} step={0.1} onChange={(v) => set('pressurePsia', v)} />
+              <NumberInput
+                value={draft.pressurePsia}
+                min={LIMITS.pressurePsia[0]}
+                max={LIMITS.pressurePsia[1]}
+                step={0.1}
+                onChange={(v) => set('pressurePsia', v)}
+              />
             </Field>
           </div>
 
           <Field label="Ventilation at surfaces (cm/s)" error={errorFor('ventMin')}>
             <div className="flex items-center gap-2">
-              <NumberInput value={draft.ventMin} min={0} max={100} step={1} onChange={(v) => set('ventMin', v)} ariaLabel="Minimum ventilation" />
+              <NumberInput
+                value={draft.ventMin}
+                min={0}
+                max={100}
+                step={1}
+                onChange={(v) => set('ventMin', v)}
+                ariaLabel="Minimum ventilation"
+              />
               <span className="text-slate-500">to</span>
-              <NumberInput value={draft.ventMax} min={0} max={100} step={1} onChange={(v) => set('ventMax', v)} ariaLabel="Maximum ventilation" />
+              <NumberInput
+                value={draft.ventMax}
+                min={0}
+                max={100}
+                step={1}
+                onChange={(v) => set('ventMax', v)}
+                ariaLabel="Maximum ventilation"
+              />
             </div>
           </Field>
 
@@ -157,7 +181,9 @@ export default function RiskCheckPage() {
                     onChange={(e) =>
                       set(
                         'materials',
-                        e.target.checked ? [...draft.materials, m.id] : draft.materials.filter((x: MaterialId) => x !== m.id),
+                        e.target.checked
+                          ? [...draft.materials, m.id]
+                          : draft.materials.filter((x: MaterialId) => x !== m.id),
                       )
                     }
                   />
@@ -168,7 +194,11 @@ export default function RiskCheckPage() {
           </fieldset>
 
           <Field label="Fire suppression">
-            <select value={draft.suppression} onChange={(e) => set('suppression', e.target.value as Suppression)} className="input">
+            <select
+              value={draft.suppression}
+              onChange={(e) => set('suppression', e.target.value as Suppression)}
+              className="input"
+            >
               <option value="water_mist">Water-mist extinguisher</option>
               <option value="co2">CO2 extinguisher</option>
               <option value="inert_jet">Directed inert-gas jet (N2)</option>
@@ -177,7 +207,11 @@ export default function RiskCheckPage() {
           </Field>
 
           <Field label="Smoke detection">
-            <select value={draft.detection} onChange={(e) => set('detection', e.target.value as Detection)} className="input">
+            <select
+              value={draft.detection}
+              onChange={(e) => set('detection', e.target.value as Detection)}
+              className="input"
+            >
               <option value="single">Single-principle detector</option>
               <option value="multi">Multi-sensor detector</option>
               <option value="unknown">Not decided</option>
@@ -228,16 +262,17 @@ export default function RiskCheckPage() {
             <p>
               <strong className="text-slate-300">How items are ranked.</strong> Each rule checks the scenario against a
               documented NASA result and assigns a tier: <em>Review first</em>, <em>Review</em> or <em>Note</em>. Items
-              are ordered by tier, then gaps in the evidence first, then by the strength of the supporting evidence (measured result and team relevance
-              rating), then by how many scenario factors matched. The rules are listed in{' '}
+              are ordered by tier, then gaps in the evidence first, then by the strength of the supporting evidence
+              (measured result and team relevance rating), then by how many scenario factors matched. The rules are
+              listed in{' '}
               <Link to="/methodology" className="text-cyan-300">
                 Data &amp; methodology
               </Link>
               .
             </p>
             <p className="mt-2">
-              EMBER is a research and decision-support aid built for NASA Space Apps 2026. It does not certify designs or
-              replace a fire-safety engineer’s analysis.
+              EMBER is a research and decision-support aid built for NASA Space Apps 2026. It does not certify designs
+              or replace a fire-safety engineer’s analysis.
             </p>
           </div>
         </section>
@@ -247,6 +282,7 @@ export default function RiskCheckPage() {
 }
 
 function BriefHeader({ report }: { report: ReturnType<typeof runRiskCheck> }) {
+  const [generated] = useState(() => new Date().toISOString().slice(0, 10))
   const s = report.scenario
   const gravity = { micro: 'Microgravity', lunar: 'Lunar 0.16 g', mars: 'Mars 0.38 g' }[s.gravity]
   return (
@@ -275,7 +311,7 @@ function BriefHeader({ report }: { report: ReturnType<typeof runRiskCheck> }) {
         />
       </dl>
       <p className="mt-4 text-sm text-slate-300">{report.coverage.message}</p>
-      <p className="mt-1 hidden text-xs print:block">Generated {new Date().toISOString().slice(0, 10)} · EMBER · Sources: NASA PSI, NTRS</p>
+      <p className="mt-1 hidden text-xs print:block">Generated {generated} · EMBER · Sources: NASA PSI, NTRS</p>
     </div>
   )
 }

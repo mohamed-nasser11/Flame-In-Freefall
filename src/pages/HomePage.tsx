@@ -10,16 +10,14 @@ import type { FlammabilityPoint } from '../lib/types'
 const MAP_MISSIONS = ['ISS', 'EXPLORATION_8.2_34', 'MARS_HAB', 'SHUTTLE_10.2']
 
 export default function HomePage() {
-  const stats = useMemo(datasetStats, [])
+  const stats = useMemo(() => datasetStats(), [])
   const missions = flammability.missions.filter((m) => MAP_MISSIONS.includes(m.id))
   const [missionId, setMissionId] = useState('EXPLORATION_8.2_34')
   const [showDroplets, setShowDroplets] = useState(false)
   const [point, setPoint] = useState<FlammabilityPoint | null>(null)
   const mission = missions.find((m) => m.id === missionId)!
 
-  const topFindings = findings
-    .filter((f) => f.evidence_type === 'result' && f.safety_score === 5)
-    .slice(0, 4)
+  const topFindings = findings.filter((f) => f.evidence_type === 'result' && f.safety_score === 5).slice(0, 4)
 
   return (
     <div className="mx-auto max-w-7xl px-4 pb-20 sm:px-6">
@@ -32,8 +30,8 @@ export default function HomePage() {
         <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-400 sm:text-lg">
           Thirty years of NASA flight experiments show that materials can burn at lower oxygen in space than in Earth
           tests, that normal cabin airflow sits near the worst case for flame spread, and that smoke reaches detectors
-          more slowly. EMBER puts that evidence in one place and maps it onto a mission, with every claim linked to
-          its NASA source.
+          more slowly. EMBER puts that evidence in one place and maps it onto a mission, with every claim linked to its
+          NASA source.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link to="/risk-check" className="btn-primary">
@@ -61,7 +59,9 @@ export default function HomePage() {
         <div className="flex flex-wrap items-end justify-between gap-4">
           <div>
             <p className="label text-ember-300/90">Interpret · Flammability Map</p>
-            <h2 className="mt-1 font-display text-2xl font-semibold text-white">Where does your cabin sit against NASA’s fire tests?</h2>
+            <h2 className="mt-1 font-display text-2xl font-semibold text-white">
+              Where does your cabin sit against NASA’s fire tests?
+            </h2>
             <p className="mt-1 max-w-2xl text-sm text-slate-400">
               Each marker is one microgravity test from Saffire, BASS, BASS-II or FLEX. Lines show cabin oxygen across
               the ventilation range. Hover a marker for its result, click it for the source.
@@ -78,7 +78,7 @@ export default function HomePage() {
           </label>
         </div>
 
-        <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px]">
+        <div className="mt-6 grid gap-6 lg:grid-cols-[minmax(0,1fr)_320px] [&>*]:min-w-0">
           <div>
             <FlammabilityMap
               missions={missions}
@@ -113,7 +113,11 @@ export default function HomePage() {
                 </button>
               ))}
             </div>
-            {point ? <PointDetail point={point} onClose={() => setPoint(null)} /> : <MissionCoverage mission={mission} />}
+            {point ? (
+              <PointDetail point={point} onClose={() => setPoint(null)} />
+            ) : (
+              <MissionCoverage mission={mission} />
+            )}
           </div>
         </div>
       </Panel>

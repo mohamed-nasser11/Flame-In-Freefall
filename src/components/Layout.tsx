@@ -22,7 +22,7 @@ export default function Layout() {
             <img src="/favicon.svg" alt="" className="h-7 w-7" />
             <span className="font-display text-lg font-semibold tracking-wide text-white">EMBER</span>
           </NavLink>
-          <nav className="-mx-1 flex flex-1 gap-1 overflow-x-auto text-sm">
+          <nav className="-mx-1 flex min-w-0 basis-full gap-1 overflow-x-auto text-sm sm:basis-auto sm:flex-1">
             {NAV.map((item) => (
               <NavLink
                 key={item.to}

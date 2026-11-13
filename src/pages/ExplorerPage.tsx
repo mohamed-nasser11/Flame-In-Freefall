@@ -79,7 +79,7 @@ export default function ExplorerPage() {
         under which conditions, what it means for a spacecraft, and where it comes from.
       </SectionHeader>
 
-      <div className="mt-8 grid gap-6 lg:grid-cols-[260px_minmax(0,1fr)]">
+      <div className="mt-8 grid gap-6 lg:grid-cols-[260px_minmax(0,1fr)] [&>*]:min-w-0">
         <aside className="space-y-5 lg:sticky lg:top-20 lg:self-start">
           <div>
             <label htmlFor="q" className="label">

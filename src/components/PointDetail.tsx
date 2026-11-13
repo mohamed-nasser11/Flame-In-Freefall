@@ -1,6 +1,6 @@
 import { OUTCOME_LABELS } from '../lib/data'
 import type { FlammabilityPoint } from '../lib/types'
-import { OUTCOME_COLORS } from './FlammabilityMap'
+import { OUTCOME_COLORS } from './mapStyles'
 import { Badge, SourceLink } from './ui'
 
 export default function PointDetail({ point, onClose }: { point: FlammabilityPoint; onClose: () => void }) {
@@ -16,7 +16,10 @@ export default function PointDetail({ point, onClose }: { point: FlammabilityPoi
             {point.experiment} · {point.geometry}
           </p>
         </div>
-        <button onClick={onClose} className="rounded-md px-2 py-1 text-xs text-slate-400 hover:bg-slate-800 hover:text-white">
+        <button
+          onClick={onClose}
+          className="rounded-md px-2 py-1 text-xs text-slate-400 hover:bg-slate-800 hover:text-white"
+        >
           Close
         </button>
       </div>
@@ -25,7 +28,10 @@ export default function PointDetail({ point, onClose }: { point: FlammabilityPoi
         <span className="inline-flex items-center gap-1.5 text-sm text-white">
           <span
             className="h-2.5 w-2.5 rounded-full border"
-            style={{ background: OUTCOME_COLORS[point.outcome].fill, borderColor: OUTCOME_COLORS[point.outcome].stroke }}
+            style={{
+              background: OUTCOME_COLORS[point.outcome].fill,
+              borderColor: OUTCOME_COLORS[point.outcome].stroke,
+            }}
           />
           {OUTCOME_LABELS[point.outcome]}
         </span>
