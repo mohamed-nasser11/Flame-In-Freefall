@@ -1,0 +1,2193 @@
+{
+  "dataset": "EMBER Flammability Map points",
+  "version": "1.0",
+  "date": "2026-11-13",
+  "description": "Microgravity combustion test points from NASA experiments (Saffire, BASS, BASS-II, FLEX) for an O2 % vs flow velocity map, plus reference limits and mission atmosphere presets. Values are taken from the cited pages; nothing is interpolated. See flammability-points-notes.md.",
+  "axes": {
+    "x": {
+      "field": "flow_velocity_cm_s",
+      "label": "Air flow velocity (cm/s)"
+    },
+    "y": {
+      "field": "o2_percent",
+      "label": "Oxygen concentration (% by volume)"
+    }
+  },
+  "enums": {
+    "outcome": {
+      "burned": "flame established and kept spreading/burning",
+      "extinguished": "flame went out during the test because of the flow/O2 condition (quenching at low flow or blowoff at high flow)",
+      "did_not_burn": "igniter fired but the material did not sustain a flame",
+      "near_limit": "flame burned briefly or weakly and the authors describe the condition as at/near the flammability limit"
+    },
+    "fuel_class": {
+      "thin_solid": "fabric or thin film",
+      "thick_solid": "PMMA rods, slabs, spheres",
+      "liquid_droplet": "FLEX fuel droplets (no forced flow)"
+    },
+    "data_quality": {
+      "reported": "number stated in the source text or table",
+      "read_from_figure": "read by eye from a plot, about +/-0.1 mm/s and +/-1 cm/s"
+    },
+    "flow_direction": "concurrent = flow in the same direction as flame spread; opposed = flow against the spread"
+  },
+  "points": [
+    {
+      "id": "SAF-I-1",
+      "experiment": "SAFFIRE-I",
+      "psi_id": "PSI-98",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "40.6 x 94 cm, 0.37 mm",
+      "flow_direction": "concurrent",
+      "o2_percent": 21.6,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 20,
+      "outcome": "burned",
+      "outcome_detail": "Burned ~84 cm in 420 s; flame power ~1200 W.",
+      "flame_spread_mm_s": 1.8,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 fell 21.7 -> 21.5% during test (midpoint shown)",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "SAF-I-2",
+      "experiment": "SAFFIRE-I",
+      "psi_id": "PSI-98",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "40.6 x ~10 cm, 0.37 mm",
+      "flow_direction": "opposed",
+      "o2_percent": 21.5,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 20,
+      "outcome": "burned",
+      "outcome_detail": "Burned ~10 cm in 70 s.",
+      "flame_spread_mm_s": 1.3,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 given as ~21.5%",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "SAF-II-1",
+      "experiment": "SAFFIRE-II",
+      "psi_id": "PSI-99",
+      "material": "Silicone",
+      "geometry": "5 x 29 cm, 0.27 mm",
+      "flow_direction": "concurrent",
+      "o2_percent": 22.1,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 20,
+      "outcome": "did_not_burn",
+      "outcome_detail": "Ignited by 80 W igniter but burning was insignificant (~0 burn length).",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 given as ~22.1%",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "SAF-II-2",
+      "experiment": "SAFFIRE-II",
+      "psi_id": "PSI-99",
+      "material": "Silicone",
+      "geometry": "5 x 29 cm, 0.61 mm",
+      "flow_direction": "concurrent",
+      "o2_percent": 22.1,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 20,
+      "outcome": "did_not_burn",
+      "outcome_detail": "Ignited by 80 W igniter but burning was insignificant (~0 burn length).",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 given as ~22.1%",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "SAF-II-3",
+      "experiment": "SAFFIRE-II",
+      "psi_id": "PSI-99",
+      "material": "Silicone",
+      "geometry": "5 x 29 cm, 1.03 mm",
+      "flow_direction": "concurrent",
+      "o2_percent": 22.1,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 20,
+      "outcome": "did_not_burn",
+      "outcome_detail": "Ignited by 80 W igniter but burning was insignificant (~0 burn length).",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 given as ~22.1%",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "SAF-II-4",
+      "experiment": "SAFFIRE-II",
+      "psi_id": "PSI-99",
+      "material": "Silicone",
+      "geometry": "5 x 29 cm, 0.37 mm",
+      "flow_direction": "opposed",
+      "o2_percent": 22.1,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 20,
+      "outcome": "did_not_burn",
+      "outcome_detail": "Ignited by 80 W igniter but burning was insignificant (~0 burn length).",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 given as ~22.1%",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "SAF-II-5",
+      "experiment": "SAFFIRE-II",
+      "psi_id": "PSI-99",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "5 x 29 cm, 0.37 mm",
+      "flow_direction": "concurrent",
+      "o2_percent": 22.1,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 20,
+      "outcome": "burned",
+      "outcome_detail": "Burned the full 29 cm in 145 s.",
+      "flame_spread_mm_s": 2.1,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 given as ~22.1%",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "SAF-II-6",
+      "experiment": "SAFFIRE-II",
+      "psi_id": "PSI-99",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "5 x 29 cm, 0.37 mm",
+      "flow_direction": "concurrent",
+      "o2_percent": 22.1,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 25,
+      "outcome": "burned",
+      "outcome_detail": "Burned the full 29 cm in 115 s.",
+      "flame_spread_mm_s": 2.6,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 given as ~22.1%",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "SAF-II-7",
+      "experiment": "SAFFIRE-II",
+      "psi_id": "PSI-99",
+      "material": "Nomex fabric (with PMMA igniter strip)",
+      "geometry": "5 x 24 cm Nomex, 0.37 mm",
+      "flow_direction": "concurrent",
+      "o2_percent": 22.1,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 20,
+      "outcome": "did_not_burn",
+      "outcome_detail": "PMMA starter burned 5 cm; flame did not spread onto the Nomex (0 cm).",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 given as ~22.1%",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "SAF-II-8",
+      "experiment": "SAFFIRE-II",
+      "psi_id": "PSI-99",
+      "material": "PMMA (variable thickness)",
+      "geometry": "5 x 29 cm, see Fig. 5 of report",
+      "flow_direction": "concurrent",
+      "o2_percent": 22.05,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 20,
+      "outcome": "burned",
+      "outcome_detail": "Burned ~10 cm over 600 s; spread rate given only as a note in the report.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 fell 22.1 -> 22.0%",
+        "spread rate not tabulated",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "SAF-II-9",
+      "experiment": "SAFFIRE-II",
+      "psi_id": "PSI-99",
+      "material": "PMMA",
+      "geometry": "5 x 29 cm, 1 cm thick",
+      "flow_direction": "concurrent",
+      "o2_percent": 21.95,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 20,
+      "outcome": "burned",
+      "outcome_detail": "Burned ~10 cm over 900 s; spread rate given only as a note in the report.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 fell 22.0 -> 21.9%",
+        "spread rate not tabulated",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "SAF-III-1",
+      "experiment": "SAFFIRE-III",
+      "psi_id": "PSI-100",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "40.6 x 94 cm, 0.37 mm",
+      "flow_direction": "concurrent",
+      "o2_percent": 21.1,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 25,
+      "outcome": "burned",
+      "outcome_detail": "Burned ~84 cm in 300 s.",
+      "flame_spread_mm_s": 2.3,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 fell 21.2 -> 21.0%",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "SAF-III-2",
+      "experiment": "SAFFIRE-III",
+      "psi_id": "PSI-100",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "40.6 x ~10 cm, 0.37 mm",
+      "flow_direction": "opposed",
+      "o2_percent": 21.1,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 25,
+      "outcome": "burned",
+      "outcome_detail": "Burned ~10 cm in 60 s.",
+      "flame_spread_mm_s": 0.98,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 fell 21.2 -> 21.0%",
+        "Cabin pressure of the Cygnus vehicle is not given in the Saffire report; ~1 atm assumed."
+      ],
+      "source": {
+        "title": "Urban et al. (2017), Saffire: A Novel Approach to Study of Spacecraft Fire Safety Using Un-manned Spacecraft (NASA GRC)",
+        "url": "https://ntrs.nasa.gov/citations/20180005168",
+        "file": "space-apps/data/Saffire_NTRS_20180005168.pdf",
+        "page": "Table 1, slides 30-31"
+      }
+    },
+    {
+      "id": "BASS-F2C-1",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2 cm wide, 8.5 cm long",
+      "flow_direction": "concurrent",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 22,
+      "outcome": "burned",
+      "outcome_detail": "Steady flame-base spread.",
+      "flame_spread_mm_s": 5.0,
+      "fuel_class": "thin_solid",
+      "data_quality": "read_from_figure",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 8 (spread rate vs flow), values read from the plot"
+      }
+    },
+    {
+      "id": "BASS-F2C-2",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2 cm wide, 8.5 cm long",
+      "flow_direction": "concurrent",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 5,
+      "outcome": "burned",
+      "outcome_detail": "Steady flame-base spread.",
+      "flame_spread_mm_s": 1.57,
+      "fuel_class": "thin_solid",
+      "data_quality": "read_from_figure",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 8 (spread rate vs flow), values read from the plot"
+      }
+    },
+    {
+      "id": "BASS-F2C-10",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2 cm wide",
+      "flow_direction": "concurrent",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 10,
+      "outcome": "burned",
+      "outcome_detail": "Steady flame-base spread 2.55 mm/s (Test 7).",
+      "flame_spread_mm_s": 2.55,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 12 caption; also slide 20 of NTRS 20140011099"
+      }
+    },
+    {
+      "id": "BASS-F1C-11",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "1 cm wide",
+      "flow_direction": "concurrent",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 11,
+      "outcome": "burned",
+      "outcome_detail": "Steady spread, base position fit x = 1.68 t (Test 10).",
+      "flame_spread_mm_s": 1.68,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 9 (fit equation) and Table I"
+      }
+    },
+    {
+      "id": "BASS-F1C-20",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "1 cm wide",
+      "flow_direction": "concurrent",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 20,
+      "outcome": "burned",
+      "outcome_detail": "Steady spread (Test 11; plot shows ~19 cm/s).",
+      "flame_spread_mm_s": 2.85,
+      "fuel_class": "thin_solid",
+      "data_quality": "read_from_figure",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 8 (spread rate vs flow), values read from the plot; Table I"
+      }
+    },
+    {
+      "id": "BASS-F2C-Q",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2 cm wide",
+      "flow_direction": "concurrent",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 1,
+      "outcome": "extinguished",
+      "outcome_detail": "Flow reduced 5 -> 3 -> 1.5 -> 1 cm/s; quenching extinction below ~1 cm/s (Test 5).",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed",
+        "extinction flow given as 'less than 1 cm/s'; 1 is an upper bound"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Table I (Test 5), Fig. 8, Conclusions"
+      }
+    },
+    {
+      "id": "BASS-F2O-1",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 1.5,
+      "outcome": "burned",
+      "outcome_detail": "Steady opposed-flow spread (fastest near 10-20 cm/s).",
+      "flame_spread_mm_s": 0.62,
+      "fuel_class": "thin_solid",
+      "data_quality": "read_from_figure",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 8 (spread rate vs flow), values read from the plot"
+      }
+    },
+    {
+      "id": "BASS-F2O-2",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 2.2,
+      "outcome": "burned",
+      "outcome_detail": "Steady opposed-flow spread (fastest near 10-20 cm/s).",
+      "flame_spread_mm_s": 0.82,
+      "fuel_class": "thin_solid",
+      "data_quality": "read_from_figure",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 8 (spread rate vs flow), values read from the plot"
+      }
+    },
+    {
+      "id": "BASS-F2O-3",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 4.2,
+      "outcome": "burned",
+      "outcome_detail": "Steady opposed-flow spread (fastest near 10-20 cm/s).",
+      "flame_spread_mm_s": 1.07,
+      "fuel_class": "thin_solid",
+      "data_quality": "read_from_figure",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 8 (spread rate vs flow), values read from the plot"
+      }
+    },
+    {
+      "id": "BASS-F2O-4",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 6.7,
+      "outcome": "burned",
+      "outcome_detail": "Steady opposed-flow spread (fastest near 10-20 cm/s).",
+      "flame_spread_mm_s": 1.12,
+      "fuel_class": "thin_solid",
+      "data_quality": "read_from_figure",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 8 (spread rate vs flow), values read from the plot"
+      }
+    },
+    {
+      "id": "BASS-F2O-5",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 9.2,
+      "outcome": "burned",
+      "outcome_detail": "Steady opposed-flow spread (fastest near 10-20 cm/s).",
+      "flame_spread_mm_s": 1.21,
+      "fuel_class": "thin_solid",
+      "data_quality": "read_from_figure",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 8 (spread rate vs flow), values read from the plot"
+      }
+    },
+    {
+      "id": "BASS-F2O-6",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 20,
+      "outcome": "burned",
+      "outcome_detail": "Steady opposed-flow spread (fastest near 10-20 cm/s).",
+      "flame_spread_mm_s": 1.48,
+      "fuel_class": "thin_solid",
+      "data_quality": "read_from_figure",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 8 (spread rate vs flow), values read from the plot"
+      }
+    },
+    {
+      "id": "BASS-F2O-7",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 47,
+      "outcome": "burned",
+      "outcome_detail": "Steady opposed-flow spread (fastest near 10-20 cm/s).",
+      "flame_spread_mm_s": 1.11,
+      "fuel_class": "thin_solid",
+      "data_quality": "read_from_figure",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 8 (spread rate vs flow), values read from the plot"
+      }
+    },
+    {
+      "id": "BASS-F2O-10",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 10,
+      "outcome": "burned",
+      "outcome_detail": "Steady opposed spread 1.21 mm/s (Test 6). In 1-g the same downward/opposed case self-extinguishes.",
+      "flame_spread_mm_s": 1.21,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 not stated per test; BASS fabric tests ran in ISS cabin air (BASS range 17-21.5%), ~21% assumed",
+        "Table I lists Test 6 at 9 cm/s; caption says ~10 cm/s"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 12 and Fig. 14 captions; slide 20-21 of NTRS 20140011099"
+      }
+    },
+    {
+      "id": "BASS-ULTEM",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Ultem 1000 film (fire-retarded PEI), 10 mil",
+      "geometry": "2 cm wide",
+      "flow_direction": "not stated",
+      "o2_percent": 21.5,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 15,
+      "outcome": "did_not_burn",
+      "outcome_detail": "Did not burn in ISS atmosphere (21-22% O2) at flows around 15 cm/s. 1-g upward limit (ULOI) 23.5% O2.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 given as range 21-22%",
+        "flow given as 'around 15 cm/s'"
+      ],
+      "source": {
+        "title": "Ferkul et al. (2013), Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment (ASGSR 2013)",
+        "url": "https://ntrs.nasa.gov/citations/20140011099",
+        "file": "Flame in freefall_ZIP 2.zip > 20140011099.pdf",
+        "page": "slides 24 and 26"
+      }
+    },
+    {
+      "id": "BASS-NOMEX-HT",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Nomex HT90-40 fabric, 12 mil",
+      "geometry": "2 cm wide",
+      "flow_direction": "not stated",
+      "o2_percent": 21.5,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 15,
+      "outcome": "did_not_burn",
+      "outcome_detail": "Did not burn in ISS atmosphere (21-22% O2) at flows around 15 cm/s. ULOI 23.5% O2.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "O2 given as range 21-22%",
+        "flow given as 'around 15 cm/s'"
+      ],
+      "source": {
+        "title": "Ferkul et al. (2013), Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment (ASGSR 2013)",
+        "url": "https://ntrs.nasa.gov/citations/20140011099",
+        "file": "Flame in freefall_ZIP 2.zip > 20140011099.pdf",
+        "page": "slides 24 and 26"
+      }
+    },
+    {
+      "id": "BASS-NOMEX-III",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "Nomex-III fabric",
+      "geometry": "2 cm wide",
+      "flow_direction": "concurrent",
+      "o2_percent": 22,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 14,
+      "outcome": "burned",
+      "outcome_detail": "Nearly complete concurrent propagation; went out within 1 cm of the end as the flame narrowed. ULOI 22% O2.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "slide title says 14 cm/s, caption says 15 cm/s"
+      ],
+      "source": {
+        "title": "Ferkul et al. (2013), Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment (ASGSR 2013)",
+        "url": "https://ntrs.nasa.gov/citations/20140011099",
+        "file": "Flame in freefall_ZIP 2.zip > 20140011099.pdf",
+        "page": "slide 27"
+      }
+    },
+    {
+      "id": "BASS-SPH-17-12",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "PMMA (acrylic) sphere",
+      "geometry": "2 cm diameter",
+      "flow_direction": "flow over sphere",
+      "o2_percent": 17,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 12,
+      "outcome": "burned",
+      "outcome_detail": "Sustained flame in 17% O2 / N2 at 1 atm.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Ferkul et al. (2013), Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment (ASGSR 2013)",
+        "url": "https://ntrs.nasa.gov/citations/20140011099",
+        "file": "Flame in freefall_ZIP 2.zip > 20140011099.pdf",
+        "page": "slides 29 and 47; Researcher's Guide p. 20 Fig. 11"
+      }
+    },
+    {
+      "id": "BASS-SPH-17-0",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "PMMA (acrylic) sphere",
+      "geometry": "15 mm diameter",
+      "flow_direction": "flow over sphere",
+      "o2_percent": 17,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 0,
+      "outcome": "extinguished",
+      "outcome_detail": "Burned at <1 cm/s; a nitrogen jet failed to put it out; flame went out only when flow was reduced to zero.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Ferkul et al. (2013), Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment (ASGSR 2013)",
+        "url": "https://ntrs.nasa.gov/citations/20140011099",
+        "file": "Flame in freefall_ZIP 2.zip > 20140011099.pdf",
+        "page": "slide 52"
+      }
+    },
+    {
+      "id": "BASS-SLAB-AIR-9",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "PMMA (acrylic) flat sample",
+      "geometry": "1 cm wide",
+      "flow_direction": "not stated",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 9,
+      "outcome": "burned",
+      "outcome_detail": "Small (~1 cm) flame persisted for a very long time in air at ~9 cm/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "'air' (ISS cabin) ~21% assumed",
+        "flow 'around 9 cm/s'"
+      ],
+      "source": {
+        "title": "Ferkul et al. (2013), Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment (ASGSR 2013)",
+        "url": "https://ntrs.nasa.gov/citations/20140011099",
+        "file": "Flame in freefall_ZIP 2.zip > 20140011099.pdf",
+        "page": "slide 50"
+      }
+    },
+    {
+      "id": "BASS-SLAB-AIR-0",
+      "experiment": "BASS",
+      "psi_id": "PSI-26",
+      "material": "PMMA (acrylic) flat sample",
+      "geometry": "1 cm wide",
+      "flow_direction": "not stated",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 0,
+      "outcome": "extinguished",
+      "outcome_detail": "Same burn: flame went out only when the air flow was completely shut off.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "'air' (ISS cabin) ~21% assumed"
+      ],
+      "source": {
+        "title": "Ferkul et al. (2013), Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment (ASGSR 2013)",
+        "url": "https://ntrs.nasa.gov/citations/20140011099",
+        "file": "Flame in freefall_ZIP 2.zip > 20140011099.pdf",
+        "page": "slide 50"
+      }
+    },
+    {
+      "id": "B2-FILM-21-1",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "PMMA film (100-400 um)",
+      "geometry": "1.2 or 2.2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 1,
+      "outcome": "extinguished",
+      "outcome_detail": "Flow decreased from 2 cm/s; extinction at ~1 cm/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "flow '~1 cm/s'"
+      ],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 3, Fig. 1 caption"
+      }
+    },
+    {
+      "id": "B2-FILM-17.3",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "PMMA film (100-400 um)",
+      "geometry": "1.2 or 2.2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 17.3,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 28,
+      "outcome": "extinguished",
+      "outcome_detail": "Blowoff extinction.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 3"
+      }
+    },
+    {
+      "id": "B2-FILM-17.4",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "PMMA film (100-400 um)",
+      "geometry": "1.2 or 2.2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 17.4,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 33,
+      "outcome": "extinguished",
+      "outcome_detail": "Blowoff extinction.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 3"
+      }
+    },
+    {
+      "id": "B2-FILM-21-45",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "PMMA film (100-400 um)",
+      "geometry": "1.2 or 2.2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 21,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 45,
+      "outcome": "burned",
+      "outcome_detail": "Could not be blown out even at 45 cm/s in 21% O2.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 3"
+      }
+    },
+    {
+      "id": "B2-ROD-18.5",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "Black PMMA rod",
+      "geometry": "4.76 mm diameter",
+      "flow_direction": "opposed",
+      "o2_percent": 18.5,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 1.5,
+      "outcome": "burned",
+      "outcome_detail": "Flame kept burning as flow was stepped down 1.9 -> 1.7 -> 1.6 -> 1.5 cm/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 4, Fig. 2 caption"
+      }
+    },
+    {
+      "id": "B2-ROD-16.3",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "Black PMMA rod",
+      "geometry": "3.18 mm diameter",
+      "flow_direction": "opposed",
+      "o2_percent": 16.3,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 5,
+      "outcome": "near_limit",
+      "outcome_detail": "Lowest O2 that burned for opposed-flow rods (16.3%); cap flame burned to a flat surface then went out.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 4 Fig. 2 caption; p. 8"
+      }
+    },
+    {
+      "id": "B2-ROD-16.5",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "PMMA rod",
+      "geometry": "0.318 cm diameter",
+      "flow_direction": "opposed",
+      "o2_percent": 16.5,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 22,
+      "outcome": "burned",
+      "outcome_detail": "Did not blow off at 22 cm/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 8"
+      }
+    },
+    {
+      "id": "B2-ROD-13.6",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "Clear PMMA rod",
+      "geometry": "0.476 cm diameter",
+      "flow_direction": "concurrent (stagnation)",
+      "o2_percent": 13.6,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 1.0,
+      "outcome": "extinguished",
+      "outcome_detail": "Burned ~19 min as flow was stepped 2.1 -> 1.5 -> 1.1 -> 1.0 cm/s, then quenched. 13.6% is the lowest flammable O2 found for concurrent rods.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "13.6% is the post-extinction O2 reading"
+      ],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 7 Fig. 6; p. 8"
+      }
+    },
+    {
+      "id": "B2-ROD-14.8",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "PMMA rod",
+      "geometry": "0.318 cm diameter",
+      "flow_direction": "concurrent (stagnation)",
+      "o2_percent": 14.8,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 13.8,
+      "outcome": "extinguished",
+      "outcome_detail": "Blowoff of the stagnation region at 13.8 cm/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 8, Fig. 7 caption"
+      }
+    },
+    {
+      "id": "B2-SLAB-18.8",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "PMMA slab, 2-sided",
+      "geometry": "2 mm thick, 2.2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 18.8,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 3,
+      "outcome": "near_limit",
+      "outcome_detail": "Shown as a quenching-velocity condition.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "outcome wording in the paper is brief; treat as near-limit"
+      ],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 5, Fig. 4 caption"
+      }
+    },
+    {
+      "id": "B2-SLAB-21.7",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "PMMA slab, 2-sided",
+      "geometry": "2 mm thick, 2.2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 21.7,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 0.9,
+      "outcome": "near_limit",
+      "outcome_detail": "Shown as a quenching-velocity condition at <1 cm/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "flow given as '<1 cm/s'",
+        "outcome wording brief; treat as near-limit"
+      ],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 5, Fig. 4 caption"
+      }
+    },
+    {
+      "id": "B2-SLAB-22.2",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "PMMA slab, 1-sided",
+      "geometry": "2 mm thick, 2.2 cm wide",
+      "flow_direction": "opposed",
+      "o2_percent": 22.2,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 11,
+      "outcome": "near_limit",
+      "outcome_detail": "Weak flame; heat loss to the backing; shown as a quenching condition even at 11 cm/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "outcome wording brief; treat as near-limit"
+      ],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 5, Fig. 4 caption"
+      }
+    },
+    {
+      "id": "B2-SIBAL-18.7",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2.2 cm wide",
+      "flow_direction": "concurrent",
+      "o2_percent": 18.7,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 2.2,
+      "outcome": "extinguished",
+      "outcome_detail": "Quenching velocity 2.2 cm/s at 18.7% O2.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 8"
+      }
+    },
+    {
+      "id": "B2-SIBAL-16.9-Q",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2.2 cm wide",
+      "flow_direction": "concurrent",
+      "o2_percent": 16.9,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 3.2,
+      "outcome": "extinguished",
+      "outcome_detail": "Quenching velocity 3.2 cm/s at 16.9% O2.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 8"
+      }
+    },
+    {
+      "id": "B2-SIBAL-17.2-BO",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "1.2 cm wide",
+      "flow_direction": "concurrent",
+      "o2_percent": 17.2,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 47,
+      "outcome": "extinguished",
+      "outcome_detail": "Blowoff at 47 cm/s (flow raised quickly from 11 cm/s).",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 9, Fig. 8"
+      }
+    },
+    {
+      "id": "B2-SIBAL-16.9-53",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "Cotton-fiberglass (SIBAL) fabric",
+      "geometry": "2.2 cm wide",
+      "flow_direction": "concurrent",
+      "o2_percent": 16.9,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 53,
+      "outcome": "burned",
+      "outcome_detail": "Did not blow off at 53 cm/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thin_solid",
+      "data_quality": "reported",
+      "uncertain": [],
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 10, Fig. 8"
+      }
+    },
+    {
+      "id": "B2-LINK-B16",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "Black PMMA rod",
+      "geometry": "6.4 mm diameter",
+      "flow_direction": "opposed",
+      "o2_percent": 18.2,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 0.6,
+      "outcome": "extinguished",
+      "outcome_detail": "Flame stopped spreading / went out when flow dropped below ~0.6 cm/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "pressure not stated in paper; BASS-II ran at 1 atm (ICES-2019-101 p. 2)"
+      ],
+      "source": {
+        "title": "Link, Huang, Fernandez-Pello, Olson, Ferkul (2018), The Effect of Gravity on Flame Spread over PMMA Cylinders, Scientific Reports 8:120 (BASS-II data)",
+        "url": "https://doi.org/10.1038/s41598-017-18398-4",
+        "file": null,
+        "page": "pp. 4-5, Figs. 4 and 6"
+      }
+    },
+    {
+      "id": "B2-LINK-B19",
+      "experiment": "BASS-II",
+      "psi_id": "PSI-25",
+      "material": "Black PMMA rod",
+      "geometry": "6.4 mm diameter",
+      "flow_direction": "opposed",
+      "o2_percent": 17.5,
+      "pressure_kpa": 101.325,
+      "flow_velocity_cm_s": 0.6,
+      "outcome": "extinguished",
+      "outcome_detail": "Flame stopped spreading / went out when flow dropped below ~0.6 cm/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "thick_solid",
+      "data_quality": "reported",
+      "uncertain": [
+        "pressure not stated in paper; BASS-II ran at 1 atm (ICES-2019-101 p. 2)"
+      ],
+      "source": {
+        "title": "Link, Huang, Fernandez-Pello, Olson, Ferkul (2018), The Effect of Gravity on Flame Spread over PMMA Cylinders, Scientific Reports 8:120 (BASS-II data)",
+        "url": "https://doi.org/10.1038/s41598-017-18398-4",
+        "file": null,
+        "page": "pp. 4-5, Figs. 4 and 6"
+      }
+    },
+    {
+      "id": "FLEX-HEPT-0.7atm-20",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Heptane droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 20.0,
+      "pressure_kpa": 70.9,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "2 droplet tests (FLEX-056, 057), all ignited. Burn time 6.8-7.9 s; burning-rate constant 0.44-0.54 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed p. 21"
+      }
+    },
+    {
+      "id": "FLEX-HEPT-0.7atm-30",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Heptane droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 30.0,
+      "pressure_kpa": 70.9,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "4 droplet tests (FLEX-027, 028, 042, 043), all ignited. Burn time 11.3-23.8 s; burning-rate constant 0.58-0.78 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 20, 21"
+      }
+    },
+    {
+      "id": "FLEX-HEPT-0.7atm-34",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Heptane droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 34.0,
+      "pressure_kpa": 70.9,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "4 droplet tests (FLEX-019, 023, 024, 039), all ignited. Burn time 4.2-13.1 s; burning-rate constant 0.73-0.9 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 20, 21"
+      }
+    },
+    {
+      "id": "FLEX-HEPT-1atm-13",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Heptane droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 13.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "near_limit",
+      "outcome_detail": "3 droplet tests (FLEX-079, 080, 081), all ignited. Burn time 1-1.5 s; burning-rate constant 0.25-0.25 mm2/s. Two of three tests burned only ~1-1.5 s with no measurable burning rate: at or near the limiting oxygen index for heptane.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed p. 22"
+      }
+    },
+    {
+      "id": "FLEX-HEPT-1atm-14",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Heptane droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 14.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "3 droplet tests (FLEX-069, 217, 218), all ignited. Burn time 1.3-3.8 s; burning-rate constant 0.24-0.94 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 22, 26"
+      }
+    },
+    {
+      "id": "FLEX-HEPT-1atm-15",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Heptane droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 15.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "6 droplet tests (FLEX-070, 072, 073, 074, 215, 216), all ignited. Burn time 1.5-6.7 s; burning-rate constant 0.37-0.77 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 22, 26"
+      }
+    },
+    {
+      "id": "FLEX-HEPT-1atm-16",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Heptane droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 16.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "3 droplet tests (FLEX-211, 212, 214), all ignited. Burn time 3.4-4.5 s; burning-rate constant 0.34-0.42 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed p. 26"
+      }
+    },
+    {
+      "id": "FLEX-HEPT-1atm-18",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Heptane droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 18.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "3 droplet tests (FLEX-062, 063, 064), all ignited. Burn time 4.8-9.6 s; burning-rate constant 0.39-0.6 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed p. 21"
+      }
+    },
+    {
+      "id": "FLEX-HEPT-1atm-21",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Heptane droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 21.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "17 droplet tests (FLEX-007, 008, 009, 035, 047, 049, 050, 051, 053, 206, 207, 208, 209, 210, 234, 235, 236), all ignited. Burn time 5.3-24 s; burning-rate constant 0.42-0.79 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 20, 21, 25, 26"
+      }
+    },
+    {
+      "id": "FLEX-HEPT-1atm-30",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Heptane droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 30.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "3 droplet tests (FLEX-031, 032, 052), all ignited. Burn time 14-18.4 s; burning-rate constant 0.68-0.85 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 20, 21"
+      }
+    },
+    {
+      "id": "FLEX-METH-0.7atm-20",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Methanol droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 20.0,
+      "pressure_kpa": 70.9,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "3 droplet tests (FLEX-036, 054, 055), all ignited. Burn time 7.1-29 s; burning-rate constant 0.41-0.46 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed p. 21"
+      }
+    },
+    {
+      "id": "FLEX-METH-0.7atm-30",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Methanol droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 30.0,
+      "pressure_kpa": 70.9,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "4 droplet tests (FLEX-025, 026, 040, 041), all ignited. Burn time 10.3-22.2 s; burning-rate constant 0.62-0.65 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 20, 21"
+      }
+    },
+    {
+      "id": "FLEX-METH-0.7atm-34",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Methanol droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 34.0,
+      "pressure_kpa": 70.9,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "5 droplet tests (FLEX-020, 021, 022, 037, 038), all ignited. Burn time 10.7-18.2 s; burning-rate constant 0.53-0.72 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 20, 21"
+      }
+    },
+    {
+      "id": "FLEX-METH-1atm-12",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Methanol droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 12.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "8 droplet tests (FLEX-083, 084, 085, 086, 087, 223, 224, 225), all ignited. Burn time 5.45-10.8 s; burning-rate constant 0.35-0.38 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 22, 26"
+      }
+    },
+    {
+      "id": "FLEX-METH-1atm-13",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Methanol droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 13.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "5 droplet tests (FLEX-075, 076, 082, 221, 222), all ignited. Burn time 7.5-16.3 s; burning-rate constant 0.35-0.37 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 22, 26"
+      }
+    },
+    {
+      "id": "FLEX-METH-1atm-14",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Methanol droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 14.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "4 droplet tests (FLEX-077, 078, 219, 220), all ignited. Burn time 8.5-26 s; burning-rate constant 0.3-0.38 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 22, 26"
+      }
+    },
+    {
+      "id": "FLEX-METH-1atm-15",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Methanol droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 15.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "5 droplet tests (FLEX-065, 066, 067, 068, 071), all ignited. Burn time 8.4-24.3 s; burning-rate constant 0.36-0.4 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 21, 22"
+      }
+    },
+    {
+      "id": "FLEX-METH-1atm-18",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Methanol droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 18.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "4 droplet tests (FLEX-058, 059, 060, 061), all ignited. Burn time 17.7-29.1 s; burning-rate constant 0.41-0.45 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed p. 21"
+      }
+    },
+    {
+      "id": "FLEX-METH-1atm-21",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Methanol droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 21.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "12 droplet tests (FLEX-001, 002, 003, 004, 005, 006, 033, 034, 046, 048, 203, 204), all ignited. Burn time 3.2-27.3 s; burning-rate constant 0.27-0.6 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 20, 21, 25"
+      }
+    },
+    {
+      "id": "FLEX-METH-1atm-30",
+      "experiment": "FLEX",
+      "psi_id": "PSI-69",
+      "material": "Methanol droplet",
+      "geometry": "free or fiber-supported droplet, ~1-5 mm",
+      "flow_direction": "quiescent (no forced flow)",
+      "o2_percent": 30.0,
+      "pressure_kpa": 101.3,
+      "flow_velocity_cm_s": 0,
+      "outcome": "burned",
+      "outcome_detail": "4 droplet tests (FLEX-029, 030, 044, 045), all ignited. Burn time 6.6-16.6 s; burning-rate constant 0.59-0.74 mm2/s.",
+      "flame_spread_mm_s": null,
+      "fuel_class": "liquid_droplet",
+      "data_quality": "reported",
+      "uncertain": [
+        "droplet (liquid fuel) result: not directly comparable with solid-material points",
+        "O2 is the rounded value printed in Table IX",
+        "droplet flames always end (fuel burns out or flame extinguishes); 'burned' means sustained burning was observed"
+      ],
+      "source": {
+        "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+        "url": "https://ntrs.nasa.gov/citations/20150023456",
+        "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+        "page": "Table IX, printed pp. 20, 21"
+      }
+    }
+  ],
+  "limits": [
+    {
+      "id": "LIM-MODEL-THIN",
+      "type": "model_curve",
+      "description": "Theoretical U-shaped flammability boundary for a thin solid fuel in microgravity: quenching branch at low flow, blowoff branch at high flow. Minimum (critical low-oxygen limit) ~12.5% O2 at ~7 cm/s; ~14.5% O2 at 20 cm/s (the lowest flow reachable in 1-g studies because of buoyancy). This is a computed model, not measured data.",
+      "curve_points": [
+        {
+          "flow_velocity_cm_s": 7,
+          "o2_percent": 12.5
+        },
+        {
+          "flow_velocity_cm_s": 20,
+          "o2_percent": 14.5
+        }
+      ],
+      "uncertain": [
+        "only two labelled values on the figure; the rest of the curve is schematic"
+      ],
+      "source": {
+        "title": "Ferkul, Olson, Johnston, T'ien (2013), Flammability Aspects of Fabric in Opposed and Concurrent Air Flow in Microgravity, 8th US National Combustion Meeting (PSI-26)",
+        "url": "https://psi.nasa.gov/physci/repo/data/investigations/PSI-26",
+        "file": "Flame in freefall_ZIP 2.zip > US National Meeting-070HE-0218-Final.docx",
+        "page": "Fig. 1"
+      }
+    },
+    {
+      "id": "LIM-UG-ROD-CONC",
+      "type": "minimum_o2",
+      "o2_percent": 13.6,
+      "condition": "microgravity, concurrent-flow PMMA rods",
+      "description": "Lowest flammable O2 found in BASS-II for concurrent rods.",
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 8"
+      }
+    },
+    {
+      "id": "LIM-UG-ROD-OPP",
+      "type": "minimum_o2",
+      "o2_percent": 16.3,
+      "condition": "microgravity, opposed-flow PMMA rods",
+      "description": "Lowest flammable O2 for opposed-flow rods; other opposed PMMA geometries did not burn below ~16%.",
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 8 and p. 11"
+      }
+    },
+    {
+      "id": "LIM-1G-PMMA-DOWN",
+      "type": "minimum_o2",
+      "o2_percent": 17.0,
+      "condition": "normal gravity, PMMA, downward spread",
+      "description": "Normal-gravity extinction limit (literature value cited in the paper).",
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 11"
+      }
+    },
+    {
+      "id": "LIM-1G-PMMA-UP",
+      "type": "minimum_o2",
+      "o2_percent": 15.4,
+      "condition": "normal gravity, PMMA, upward spread",
+      "description": "Normal-gravity extinction limit (literature value cited in the paper). Paper concludes microgravity limits are 1-2% O2 lower, so 1-g tests are not conservative.",
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 11"
+      }
+    },
+    {
+      "id": "LIM-MARGIN",
+      "type": "safety_margin",
+      "o2_percent": -2.4,
+      "condition": "1/4 inch PMMA rod: microgravity steady spread at 13.6% vs 1-g blowoff limit 16%",
+      "description": "Poster reports a negative O2 margin of safety of 2.4% and says 1-g flammability limits should be derated by at least that amount.",
+      "uncertain": [
+        "read from poster text; no page numbers in the poster"
+      ],
+      "source": {
+        "title": "Ferkul et al. (2014), Combustion of Solids in Microgravity: Results from the BASS-II Experiment (ASGSR 2014 poster)",
+        "url": "https://ntrs.nasa.gov/citations/20160000593",
+        "file": null,
+        "page": "section 'Spacecraft Materials (Olson)'"
+      }
+    },
+    {
+      "id": "LIM-ROD-OPP-LINK",
+      "type": "minimum_o2",
+      "o2_percent": 17.0,
+      "condition": "microgravity, 6.4-12.7 mm black PMMA rods, opposed flow 0.4-8 cm/s",
+      "description": "Spread sustained at 17% O2 in microgravity vs 18% (or 18.5%) needed in normal gravity.",
+      "source": {
+        "title": "Link, Huang, Fernandez-Pello, Olson, Ferkul (2018), The Effect of Gravity on Flame Spread over PMMA Cylinders, Scientific Reports 8:120 (BASS-II data)",
+        "url": "https://doi.org/10.1038/s41598-017-18398-4",
+        "file": null,
+        "page": "p. 1 abstract; pp. 5-7"
+      }
+    },
+    {
+      "id": "LIM-ULOI",
+      "type": "material_1g_limit",
+      "description": "1-g upward limiting oxygen index (ULOI) of BASS materials: Ultem 1000 23.5%, Nomex HT90-40 23.5%, Nomex-III 22%.",
+      "values": {
+        "Ultem 1000": 23.5,
+        "Nomex HT90-40": 23.5,
+        "Nomex-III": 22.0
+      },
+      "source": {
+        "title": "Ferkul et al. (2013), Thickness and Fuel Preheating Effects on Material Flammability in Microgravity from the BASS Experiment (ASGSR 2013)",
+        "url": "https://ntrs.nasa.gov/citations/20140011099",
+        "file": "Flame in freefall_ZIP 2.zip > 20140011099.pdf",
+        "page": "slide 24"
+      }
+    },
+    {
+      "id": "LIM-FAN-OFF",
+      "type": "observation",
+      "description": "In BASS-II, flames always quenched when the fan was turned off (supports ISS practice of shutting ventilation in a fire). Authors warn this may not hold in high-O2, low-pressure exploration atmospheres or partial gravity.",
+      "source": {
+        "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+        "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+        "file": null,
+        "page": "p. 1 abstract and p. 11"
+      }
+    }
+  ],
+  "missions": [
+    {
+      "id": "ISS",
+      "name": "International Space Station",
+      "status": "operational",
+      "o2_percent": 21,
+      "pressure_psia": 14.7,
+      "pressure_kpa": 101.4,
+      "ventilation_cm_s": {
+        "min": 5,
+        "max": 30,
+        "note": "typical ISS ventilation 5-30 cm/s (ICES-2019-101 p. 10); Researcher's Guide gives the spacecraft range as 0-30 cm/s (p. 21)"
+      },
+      "gravity": "microgravity",
+      "sources": [
+        {
+          "title": "NASA ISS Program Science Office (2015), A Researcher's Guide to: Combustion Science",
+          "url": "https://www.nasa.gov/sites/default/files/atoms/files/np-2015-10-034-jsc_combustion_in_reduced_gravity-iss-mini-book-011116-508.pdf",
+          "file": "space-apps/data/ISS_Researchers_Guide_Combustion_Science.pdf",
+          "page": "p. 19 ('ISS air, nominally 21 percent oxygen by volume and one atmospheric pressure')"
+        },
+        {
+          "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+          "url": "https://ntrs.nasa.gov/citations/20150023456",
+          "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+          "page": "printed p. 13 and Table IX ('cabin air, 0.21/0.79 O2/N2, 1.0 atm')"
+        },
+        {
+          "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+          "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+          "file": null,
+          "page": "p. 10 (ventilation)"
+        }
+      ],
+      "uncertain": [],
+      "o2_partial_pressure_kpa": 21.3
+    },
+    {
+      "id": "EXPLORATION_8.2_34",
+      "name": "NASA Exploration Atmosphere (Artemis-era habitats / landers)",
+      "status": "under_study",
+      "o2_percent": 34,
+      "pressure_psia": 8.2,
+      "pressure_kpa": 56.5,
+      "ventilation_cm_s": null,
+      "gravity": "lunar (0.16 g) or microgravity",
+      "sources": [
+        {
+          "title": "Garbino (2022), Exploration Atmospheres Validation Study, Open Atmospheres Forum (NASA)",
+          "url": "https://ntrs.nasa.gov/api/citations/20220011152/downloads/Exploration%20Atmosphers%20OAF%2020220805.pdf",
+          "file": null,
+          "page": "slide 2 ('8.2 psi, 34% O2, 66% N2'; 'Artemis habitat and suit atmospheric parameters have not been finalized')"
+        },
+        {
+          "title": "Norcross et al. (2013), Effects of the 8 psia / 32% O2 Atmosphere on the Human in the Spaceflight Environment, NASA/TM-2013-217377",
+          "url": "https://ntrs.nasa.gov/citations/20130013505",
+          "file": null,
+          "page": "abstract (8.0 psia/32% recommended for EVA-intensive phases; refinement to 8.2 psia/34%)"
+        },
+        {
+          "title": "Johnson, Kessler, Quesenbery (2024), Lunar Habitation Science Opportunities and Constraints (NASA, LSSW 2024)",
+          "url": "https://ntrs.nasa.gov/api/citations/20240010451/downloads/LSSW24_%20Hab_Science%20Opp_Constraints_final2.pdf",
+          "file": null,
+          "page": "notional lunar surface habitat concepts: '8.2 psia, 34% O2'"
+        }
+      ],
+      "uncertain": [
+        "NOT an adopted Artemis requirement: NASA says Artemis atmosphere parameters are not finalized (Garbino 2022, slide 2)",
+        "Orion and Gateway nominal atmospheres were not verified in this dataset",
+        "no microgravity flammability test in this dataset was run at 8.2 psia; closest FLEX droplet tests were 30-34% O2 at ~0.7 atm (10.3 psia)",
+        "no ventilation value found"
+      ],
+      "o2_partial_pressure_kpa": 19.2
+    },
+    {
+      "id": "EAWG_8.0_32",
+      "name": "Exploration Atmospheres Working Group original recommendation",
+      "status": "historical_recommendation",
+      "o2_percent": 32,
+      "pressure_psia": 8.0,
+      "pressure_kpa": 55.2,
+      "ventilation_cm_s": null,
+      "gravity": "n/a",
+      "sources": [
+        {
+          "title": "Norcross et al. (2013), Effects of the 8 psia / 32% O2 Atmosphere on the Human in the Spaceflight Environment, NASA/TM-2013-217377",
+          "url": "https://ntrs.nasa.gov/citations/20130013505",
+          "file": null,
+          "page": "abstract"
+        }
+      ],
+      "uncertain": [
+        "superseded by the 8.2 psia / 34% proposal"
+      ],
+      "o2_partial_pressure_kpa": 17.7
+    },
+    {
+      "id": "MARS_HAB",
+      "name": "Mars surface habitat (assumed)",
+      "status": "assumption",
+      "o2_percent": 34,
+      "pressure_psia": 8.2,
+      "pressure_kpa": 56.5,
+      "ventilation_cm_s": null,
+      "gravity": "Mars (0.38 g)",
+      "sources": [
+        {
+          "title": "Garbino (2022), Exploration Atmospheres Validation Study, Open Atmospheres Forum (NASA)",
+          "url": "https://ntrs.nasa.gov/api/citations/20220011152/downloads/Exploration%20Atmosphers%20OAF%2020220805.pdf",
+          "file": null,
+          "page": "slide 2"
+        },
+        {
+          "title": "Olson, Ferkul, Bhattacharjee, Fernandez-Pello, Miller, Wichman, T'ien (2019), Flammability Limits from BASS-II Testing in Microgravity Compared to Normal Gravity Limits, ICES-2019-101",
+          "url": "https://ttu-ir.tdl.org/items/1922ad9f-ef4c-4f52-96a4-980c23debe5e",
+          "file": null,
+          "page": "p. 11 (partial-gravity buoyant flow ~15 cm/s on Mars, ~10 cm/s on the Moon)"
+        }
+      ],
+      "uncertain": [
+        "no NASA Mars habitat atmosphere baseline was found; this preset reuses the 8.2 psia / 34% exploration atmosphere as an assumption and must be labelled as such",
+        "on Mars/Moon, buoyancy adds an induced flow of roughly 15/10 cm/s even with fans off (ICES-2019-101 p. 11)"
+      ],
+      "o2_partial_pressure_kpa": 19.2
+    },
+    {
+      "id": "SHUTTLE_10.2",
+      "name": "Space Shuttle staged-decompression atmosphere",
+      "status": "historical",
+      "o2_percent": 26.5,
+      "pressure_psia": 10.2,
+      "pressure_kpa": 70.3,
+      "ventilation_cm_s": null,
+      "gravity": "microgravity",
+      "sources": [
+        {
+          "title": "Norcross et al. (2013), Effects of the 8 psia / 32% O2 Atmosphere on the Human in the Spaceflight Environment, NASA/TM-2013-217377",
+          "url": "https://ntrs.nasa.gov/citations/20130013505",
+          "file": null,
+          "page": "abstract (used on 34 Shuttle missions)"
+        }
+      ],
+      "uncertain": [],
+      "o2_partial_pressure_kpa": 18.6
+    },
+    {
+      "id": "ISS_EVA_PREBREATHE_0.7atm_30",
+      "name": "ISS EVA pre-breathe / max proposed exploration O2 (as tested in FLEX)",
+      "status": "test_condition",
+      "o2_percent": 30,
+      "pressure_psia": 10.3,
+      "pressure_kpa": 70.9,
+      "ventilation_cm_s": null,
+      "gravity": "microgravity",
+      "sources": [
+        {
+          "title": "Dietrich et al. (2015), Detailed Results From the Flame Extinguishment Experiment (FLEX) March 2009 to December 2011, NASA/TP-2015-216046",
+          "url": "https://ntrs.nasa.gov/citations/20150023456",
+          "file": "Flame in freefall_ZIP 2.zip > 20150023456.pdf",
+          "page": "printed p. 13 ('0.70-atm, 0.30 oxygen mole fraction ... EVA pre-breathe environment on the ISS and the maximum proposed oxygen mole fraction on future exploration vehicles')"
+        }
+      ],
+      "uncertain": [],
+      "o2_partial_pressure_kpa": 21.3
+    },
+    {
+      "id": "APOLLO",
+      "name": "Apollo / Gemini cabin (in flight)",
+      "status": "historical",
+      "o2_percent": 100,
+      "pressure_psia": 5.0,
+      "pressure_kpa": 34.5,
+      "ventilation_cm_s": null,
+      "gravity": "microgravity",
+      "sources": [
+        {
+          "title": "Garbino (2022), Exploration Atmospheres Validation Study, Open Atmospheres Forum (NASA)",
+          "url": "https://ntrs.nasa.gov/api/citations/20220011152/downloads/Exploration%20Atmosphers%20OAF%2020220805.pdf",
+          "file": null,
+          "page": "slide 6 (Apollo/Gemini 5.0 psi, 100% O2); slide 2 ('unacceptable flammability risk for Artemis')"
+        }
+      ],
+      "uncertain": [
+        "Apollo 1 fire happened on the pad at higher than 5 psi pure O2; that value is not in this dataset"
+      ],
+      "o2_partial_pressure_kpa": 34.5
+    }
+  ]
+}
