@@ -91,3 +91,48 @@ export function datasetStats() {
     hazardCounts,
   }
 }
+
+const MATERIAL_KEYWORDS: [string, RegExp][] = [
+  ['Cotton-fiberglass fabric', /cotton/i],
+  ['Nomex', /nomex/i],
+  ['Silicone', /silicone/i],
+  ['PMMA (acrylic)', /pmma|acrylic/i],
+  ['Ultem', /ultem/i],
+  ['Kapton', /kapton/i],
+  ['Teflon', /teflon/i],
+  ['Cellulose', /cellulose/i],
+  ['Heptane', /heptane/i],
+  ['Methanol', /methanol/i],
+  ['Fire-retardant foam', /pyrell|foam/i],
+]
+
+/** Materials named in a finding's text or test conditions. */
+export function materialsOf(f: Finding): string[] {
+  const text = `${f.finding} ${f.conditions}`
+  return MATERIAL_KEYWORDS.filter(([, re]) => re.test(text)).map(([name]) => name)
+}
+
+export const FINDING_MATERIALS = Array.from(new Set(findings.flatMap(materialsOf))).sort()
+
+/** Caveats that follow from the record itself, shown next to every finding. */
+export function findingCaveats(f: Finding): string[] {
+  const caveats: string[] = []
+  if (f.evidence_type === 'objective') {
+    caveats.push('This card states what the experiment set out to study. It is not a measured result.')
+  }
+  if (f.evidence_type === 'hypothesis') {
+    caveats.push('This is a hypothesis under test. Our sources do not confirm or reject it.')
+  }
+  if (f.missions.some((m) => m !== 'ISS')) {
+    caveats.push(
+      'Tested in microgravity at about 1 atm. Lunar and Martian partial gravity and the proposed 34% O2 exploration atmosphere were not part of the test.',
+    )
+  }
+  if (/General|program|operations/i.test(f.experiment)) {
+    caveats.push('Summarises several experiments or a programme, so specific test conditions are not given.')
+  }
+  if (!f.source.file) {
+    caveats.push('Taken from the online investigation page; no archived copy of the document is in our data set.')
+  }
+  return caveats
+}
