@@ -21,7 +21,7 @@ interface Props {
 
 const W = 860
 const H = 520
-const M = { top: 28, right: 190, bottom: 58, left: 60 }
+const M = { top: 28, right: 160, bottom: 58, left: 60 }
 const ZERO_X = M.left + 22
 const LOG_LEFT = M.left + 56
 const FLOW_DOMAIN: [number, number] = [0.5, 60]
@@ -167,9 +167,13 @@ export default function FlammabilityMap({
                 strokeDasharray={m.ventilation_cm_s ? undefined : '1 6'}
               />
               <circle cx={x2} cy={yy} r={active ? 4.5 : 3} fill="#e2e8f0" />
-              <text x={W - M.right + 8} y={yy} dy="0.32em" className={`text-[11px] ${active ? 'fill-white font-semibold' : 'fill-slate-400'}`}>
-                {group.map(shortMissionName).join(' / ')}
-                {offChart ? ` (${m.o2_percent}% ↑)` : ''}
+              <text x={W - M.right + 8} y={yy - (group.length - 1) * 7} dy="0.32em" className={`text-[11px] ${active ? 'fill-white font-semibold' : 'fill-slate-400'}`}>
+                {group.map((g, gi) => (
+                  <tspan key={g.id} x={W - M.right + 8} dy={gi === 0 ? '0.32em' : '1.2em'}>
+                    {shortMissionName(g)}
+                    {offChart && gi === 0 ? ` (${m.o2_percent}% ↑)` : ''}
+                  </tspan>
+                ))}
               </text>
               <line x1={x2 + 6} x2={W - M.right + 4} y1={yy} y2={yy} stroke="#334155" strokeDasharray="2 3" />
             </g>
