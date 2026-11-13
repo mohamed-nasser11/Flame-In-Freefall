@@ -137,7 +137,10 @@ const RULES: Rule[] = [
       title: 'Cabin oxygen is outside the tested range for solid materials',
       relevance: gap > 0 ? 'high' : 'medium',
       outsideEvidence: true,
-      factors: [`${s.o2Percent}% O2 at ${s.pressurePsia} psia`],
+      factors: [
+        `${s.o2Percent}% O2 (solid-material tests reach ${SOLID_O2_MAX}%)`,
+        `${s.pressurePsia} psia (solid-material tests ran at about 14.7 psia)`,
+      ],
       comparison: coverage.message,
       review:
         'Which cabin materials have flammability data at this oxygen level and pressure? Can the material list be screened at the actual mission atmosphere before flight?',
