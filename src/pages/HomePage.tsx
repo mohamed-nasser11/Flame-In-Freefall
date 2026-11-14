@@ -24,14 +24,12 @@ export default function HomePage() {
       <section className="pt-12 pb-10 sm:pt-16">
         <p className="label text-cyan-300/80">NASA Space Apps 2026 · Flame in Freefall</p>
         <h1 className="mt-3 max-w-4xl font-display text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl">
-          Fire behaves differently in microgravity.
-          <span className="text-ember-400"> Spacecraft fire safety should be planned that way.</span>
+          Fire behaves differently in space.
+          <span className="text-ember-400"> EMBER turns NASA’s flight evidence into fire-safety decisions.</span>
         </h1>
-        <p className="mt-5 max-w-3xl text-base leading-relaxed text-slate-400 sm:text-lg">
-          Thirty years of NASA flight experiments show that materials can burn at lower oxygen in space than in Earth
-          tests, that normal cabin airflow sits near the worst case for flame spread, and that smoke reaches detectors
-          more slowly. EMBER puts that evidence in one place and maps it onto a mission, with every claim linked to its
-          NASA source.
+        <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
+          Check a mission’s fire risks, explore what NASA measured, and see what is still untested. Every claim links to
+          its NASA source.
         </p>
         <div className="mt-8 flex flex-wrap gap-3">
           <Link to="/risk-check" className="btn-primary">
@@ -87,6 +85,12 @@ export default function HomePage() {
               selectedPointId={point?.id}
               onSelectPoint={setPoint}
             />
+            {showDroplets && (
+              <p className="mt-3 rounded-md border border-amber-400/30 bg-amber-400/5 px-3 py-2 text-xs text-amber-200/90">
+                Droplet tests burned liquid fuel with no airflow, some at reduced pressure. They are not directly
+                comparable with the solid-material tests, so read them as a separate series.
+              </p>
+            )}
             <div className="mt-4">
               <MapLegend />
             </div>
