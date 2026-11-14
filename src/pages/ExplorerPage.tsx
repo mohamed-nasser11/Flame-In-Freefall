@@ -15,27 +15,24 @@ import {
   materialsOf,
 } from '../lib/data'
 import { search } from '../lib/search'
-import type { EvidenceType, Finding, HazardType, MissionTag } from '../lib/types'
+import type { EvidenceType, Finding, HazardType } from '../lib/types'
 
 type SortKey = 'relevance' | 'score' | 'id' | 'experiment'
 
-const MISSIONS: MissionTag[] = ['ISS', 'Moon', 'Mars']
-
 type Row = { f: Finding; score?: number; matched?: string[] }
-type FilterKey = 'hazard' | 'experiment' | 'material' | 'mission' | 'evidence'
+type FilterKey = 'hazard' | 'experiment' | 'material' | 'evidence'
 interface Option {
   value: string
   label: string
   count: number
 }
 
-const FILTER_KEYS: FilterKey[] = ['hazard', 'experiment', 'material', 'mission', 'evidence']
+const FILTER_KEYS: FilterKey[] = ['hazard', 'experiment', 'material', 'evidence']
 
 const MATCHERS: Record<FilterKey, (f: Finding, value: string) => boolean> = {
   hazard: (f, v) => f.hazard_type === v,
   experiment: (f, v) => experimentsOf(f).includes(v),
   material: (f, v) => materialsOf(f).includes(v),
-  mission: (f, v) => f.missions.includes(v as MissionTag),
   evidence: (f, v) => f.evidence_type === v,
 }
 
@@ -45,7 +42,6 @@ export default function ExplorerPage() {
   const hazard = (params.get('hazard') ?? '') as HazardType | ''
   const experiment = params.get('experiment') ?? ''
   const material = params.get('material') ?? ''
-  const mission = (params.get('mission') ?? '') as MissionTag | ''
   const evidence = (params.get('evidence') ?? '') as EvidenceType | ''
   const sort = (params.get('sort') ?? (q ? 'relevance' : 'score')) as SortKey
   const openId = params.get('finding')
@@ -67,7 +63,7 @@ export default function ExplorerPage() {
     }))
   }, [q])
 
-  const active: Partial<Record<FilterKey, string>> = { hazard, experiment, material, mission, evidence }
+  const active: Partial<Record<FilterKey, string>> = { hazard, experiment, material, evidence }
 
   /** Rows that pass every active filter except `skip`, used for the option counts. */
   function passing(skip?: FilterKey) {
@@ -85,6 +81,13 @@ export default function ExplorerPage() {
     }))
   }
 
+  const hazardOptions = optionsFor(
+    'hazard',
+    findingsDataset.hazard_types.map((h) => [h, HAZARD_LABELS[h]]),
+  )
+  const moreCount = [experiment, material, evidence].filter(Boolean).length
+  const moreOpen = moreCount > 0
+
   const results = (() => {
     const sorted = passing()
     if (sort === 'score' || (sort === 'relevance' && !q)) {
@@ -97,7 +100,7 @@ export default function ExplorerPage() {
     return sorted
   })()
 
-  const activeFilters = [hazard, experiment, material, mission, evidence].filter(Boolean).length
+  const activeFilters = [hazard, experiment, material, evidence].filter(Boolean).length
 
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
@@ -122,56 +125,64 @@ export default function ExplorerPage() {
               className="mt-1.5 w-full rounded-lg border border-slate-700 bg-slate-950/70 px-3 py-2 text-sm text-white placeholder:text-slate-600 focus:border-cyan-500 focus:outline-none"
             />
           </div>
-          <Select
-            id="hazard"
-            label="Hazard"
-            value={hazard}
-            onChange={(v) => update('hazard', v)}
-            options={optionsFor(
-              'hazard',
-              findingsDataset.hazard_types.map((h) => [h, HAZARD_LABELS[h]]),
-            )}
-          />
-          <Select
-            id="experiment"
-            label="Experiment"
-            value={experiment}
-            onChange={(v) => update('experiment', v)}
-            options={optionsFor(
-              'experiment',
-              EXPERIMENTS.map((e) => [e, e]),
-            )}
-          />
-          <Select
-            id="material"
-            label="Material"
-            value={material}
-            onChange={(v) => update('material', v)}
-            options={optionsFor(
-              'material',
-              FINDING_MATERIALS.map((m) => [m, m]),
-            )}
-          />
-          <Select
-            id="mission"
-            label="Relevant to mission"
-            value={mission}
-            onChange={(v) => update('mission', v)}
-            options={optionsFor(
-              'mission',
-              MISSIONS.map((m) => [m, m]),
-            )}
-          />
-          <Select
-            id="evidence"
-            label="Evidence type"
-            value={evidence}
-            onChange={(v) => update('evidence', v)}
-            options={optionsFor(
-              'evidence',
-              (Object.keys(EVIDENCE_LABELS) as EvidenceType[]).map((e) => [e, EVIDENCE_LABELS[e].label]),
-            )}
-          />
+          <div>
+            <p className="label">Hazard</p>
+            <div className="mt-1.5 flex flex-wrap gap-1.5">
+              {[{ value: '', label: 'All', count: passing('hazard').length }, ...hazardOptions].map((o) => (
+                <button
+                  key={o.value || 'all'}
+                  onClick={() => update('hazard', o.value)}
+                  disabled={o.count === 0 && o.value !== hazard}
+                  aria-pressed={hazard === o.value}
+                  className={`rounded-full border px-3 py-1 text-xs transition-colors disabled:opacity-35 ${
+                    hazard === o.value
+                      ? 'border-ember-400/60 bg-ember-500/15 text-ember-200'
+                      : 'border-slate-700 text-slate-300 hover:border-slate-500 hover:text-white'
+                  }`}
+                >
+                  {o.label} <span className="text-slate-500">{o.count}</span>
+                </button>
+              ))}
+            </div>
+          </div>
+          <details className="group" open={moreOpen || undefined}>
+            <summary className="label cursor-pointer list-none select-none text-cyan-300 hover:text-cyan-200">
+              <span className="group-open:hidden">More filters{moreCount ? ` (${moreCount} on)` : ''} +</span>
+              <span className="hidden group-open:inline">Fewer filters −</span>
+            </summary>
+            <div className="mt-4 space-y-5">
+              <Select
+                id="experiment"
+                label="Experiment"
+                value={experiment}
+                onChange={(v) => update('experiment', v)}
+                options={optionsFor(
+                  'experiment',
+                  EXPERIMENTS.map((e) => [e, e]),
+                )}
+              />
+              <Select
+                id="material"
+                label="Material"
+                value={material}
+                onChange={(v) => update('material', v)}
+                options={optionsFor(
+                  'material',
+                  FINDING_MATERIALS.map((m) => [m, m]),
+                )}
+              />
+              <Select
+                id="evidence"
+                label="Evidence type"
+                value={evidence}
+                onChange={(v) => update('evidence', v)}
+                options={optionsFor(
+                  'evidence',
+                  (Object.keys(EVIDENCE_LABELS) as EvidenceType[]).map((e) => [e, EVIDENCE_LABELS[e].label]),
+                )}
+              />
+            </div>
+          </details>
           {activeFilters > 0 && (
             <button
               className="text-xs text-cyan-300 hover:text-cyan-200"
@@ -247,7 +258,6 @@ const FILTER_LABELS: Record<FilterKey, string> = {
   hazard: 'Hazard',
   experiment: 'Experiment',
   material: 'Material',
-  mission: 'Mission',
   evidence: 'Evidence',
 }
 

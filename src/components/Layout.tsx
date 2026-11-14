@@ -3,11 +3,11 @@ import OrbitBackdrop from './OrbitBackdrop'
 
 const NAV = [
   { to: '/', label: 'Overview', end: true },
-  { to: '/explorer', label: 'Research Explorer' },
-  { to: '/risk-check', label: 'Mission Risk Check' },
-  { to: '/ask', label: 'Ask EMBER' },
+  { to: '/explorer', label: 'Research' },
+  { to: '/risk-check', label: 'Risk Check' },
+  { to: '/ask', label: 'Ask' },
   { to: '/compare', label: 'Compare' },
-  { to: '/gaps', label: 'Knowledge Gaps' },
+  { to: '/gaps', label: 'Gaps' },
 ]
 
 export default function Layout() {
@@ -22,7 +22,7 @@ export default function Layout() {
             <img src="/favicon.svg" alt="" className="h-7 w-7" />
             <span className="font-display text-lg font-semibold tracking-wide text-white">EMBER</span>
           </NavLink>
-          <nav className="-mx-1 flex min-w-0 basis-full gap-1 overflow-x-auto text-sm sm:basis-auto sm:flex-1">
+          <nav className="-mx-1 flex min-w-0 basis-full flex-wrap gap-1 text-sm sm:basis-auto sm:flex-1 sm:flex-nowrap sm:overflow-x-auto">
             {NAV.map((item) => (
               <NavLink
                 key={item.to}
