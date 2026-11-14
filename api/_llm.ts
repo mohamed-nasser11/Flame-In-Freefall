@@ -10,7 +10,9 @@ interface LlmRequest {
 }
 
 const MAX_OUTPUT_TOKENS = 1500
-const TIMEOUT_MS = 45_000
+/** Free-tier Gemini models, fastest first; the next is tried when one is busy or retired. */
+export const GEMINI_MODELS = ['gemini-3.1-flash-lite', 'gemini-3.5-flash']
+const TIMEOUT_MS = 30_000
 
 /** Which provider answers, based on the keys present. Anthropic wins when both are set. */
 export function activeProvider(env: NodeJS.ProcessEnv = process.env): 'anthropic' | 'gemini' | null {
@@ -22,7 +24,10 @@ export function activeProvider(env: NodeJS.ProcessEnv = process.env): 'anthropic
 export async function generate(req: LlmRequest, env: NodeJS.ProcessEnv = process.env): Promise<LlmResult> {
   const provider = activeProvider(env)
   if (provider === 'anthropic') return generateAnthropic(req, env.EMBER_MODEL || 'claude-opus-5-5')
-  if (provider === 'gemini') return generateGemini(req, env.GEMINI_API_KEY!, env.GEMINI_MODEL || 'gemini-2.5-flash')
+  if (provider === 'gemini') {
+    const models = env.GEMINI_MODEL ? [env.GEMINI_MODEL, ...GEMINI_MODELS] : GEMINI_MODELS
+    return generateGemini(req, env.GEMINI_API_KEY!, [...new Set(models)])
+  }
   throw new Error('No language model is configured.')
 }
 
@@ -66,7 +71,22 @@ export function parseGemini(body: GeminiResponse, model: string): LlmResult {
   return { kind: 'text', text, model: used }
 }
 
-async function generateGemini({ system, history, prompt }: LlmRequest, key: string, model: string): Promise<LlmResult> {
+async function generateGemini(req: LlmRequest, key: string, models: string[]): Promise<LlmResult> {
+  let lastError: Error | undefined
+  for (const model of models) {
+    try {
+      return await callGemini(req, key, model)
+    } catch (err) {
+      lastError = err instanceof Error ? err : new Error(String(err))
+      const status = (err as { status?: number }).status
+      // Busy, rate-limited or retired models are worth skipping; anything else is not.
+      if (status !== undefined && status !== 404 && status !== 429 && status < 500) throw err
+    }
+  }
+  throw lastError ?? new Error('No Gemini model answered.')
+}
+
+async function callGemini({ system, history, prompt }: LlmRequest, key: string, model: string): Promise<LlmResult> {
   const url = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(model)}:generateContent`
   const res = await fetch(url, {
     method: 'POST',
@@ -79,9 +99,15 @@ async function generateGemini({ system, history, prompt }: LlmRequest, key: stri
         { role: 'user', parts: [{ text: prompt }] },
       ],
       // Room for the model's internal reasoning on top of the ~1500-token answer.
-      generationConfig: { temperature: 0.2, maxOutputTokens: MAX_OUTPUT_TOKENS * 4 },
+      generationConfig: {
+        temperature: 0.2,
+        maxOutputTokens: MAX_OUTPUT_TOKENS * 4,
+        thinkingConfig: { thinkingLevel: 'low' },
+      },
     }),
   })
-  if (!res.ok) throw new Error(`Gemini request failed with status ${res.status}`)
+  if (!res.ok) {
+    throw Object.assign(new Error(`Gemini ${model} request failed with status ${res.status}`), { status: res.status })
+  }
   return parseGemini((await res.json()) as GeminiResponse, model)
 }

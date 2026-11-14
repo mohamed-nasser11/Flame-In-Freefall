@@ -100,12 +100,12 @@ The development server also serves `/api/ask`. Without an API key, Ask EMBER sti
 
 ### Environment variables
 
-| Name                | Required       | Description                                                |
-| ------------------- | -------------- | ---------------------------------------------------------- |
-| `GEMINI_API_KEY`    | For AI answers | Free tier available at Google AI Studio. Server-side only. |
-| `ANTHROPIC_API_KEY` | For AI answers | Used instead of Gemini when set. Server-side only.         |
-| `GEMINI_MODEL`      | No             | Overrides the Gemini model (default `gemini-2.5-flash`).   |
-| `EMBER_MODEL`       | No             | Overrides the Anthropic model (default `claude-opus-5-5`). |
+| Name                | Required       | Description                                                   |
+| ------------------- | -------------- | ------------------------------------------------------------- |
+| `GEMINI_API_KEY`    | For AI answers | Free tier available at Google AI Studio. Server-side only.    |
+| `ANTHROPIC_API_KEY` | For AI answers | Used instead of Gemini when set. Server-side only.            |
+| `GEMINI_MODEL`      | No             | Overrides the Gemini model (default `gemini-3.1-flash-lite`). |
+| `EMBER_MODEL`       | No             | Overrides the Anthropic model (default `claude-opus-5-5`).    |
 
 ## Deployment
 
