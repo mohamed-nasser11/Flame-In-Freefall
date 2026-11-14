@@ -21,6 +21,24 @@ type SortKey = 'relevance' | 'score' | 'id' | 'experiment'
 
 const MISSIONS: MissionTag[] = ['ISS', 'Moon', 'Mars']
 
+type Row = { f: Finding; score?: number; matched?: string[] }
+type FilterKey = 'hazard' | 'experiment' | 'material' | 'mission' | 'evidence'
+interface Option {
+  value: string
+  label: string
+  count: number
+}
+
+const FILTER_KEYS: FilterKey[] = ['hazard', 'experiment', 'material', 'mission', 'evidence']
+
+const MATCHERS: Record<FilterKey, (f: Finding, value: string) => boolean> = {
+  hazard: (f, v) => f.hazard_type === v,
+  experiment: (f, v) => experimentsOf(f).includes(v),
+  material: (f, v) => materialsOf(f).includes(v),
+  mission: (f, v) => f.missions.includes(v as MissionTag),
+  evidence: (f, v) => f.evidence_type === v,
+}
+
 export default function ExplorerPage() {
   const [params, setParams] = useSearchParams()
   const q = params.get('q') ?? ''
@@ -40,26 +58,35 @@ export default function ExplorerPage() {
     setParams(next, { replace: key !== 'finding' })
   }
 
-  const results = useMemo(() => {
-    let list: { f: Finding; score?: number; matched?: string[] }[]
-    if (q.trim()) {
-      list = search(q, { limit: 50, relativeCutoff: 0.08, kinds: ['finding'] }).map((h) => ({
-        f: (h.doc as Extract<typeof h.doc, { kind: 'finding' }>).finding,
-        score: h.score,
-        matched: h.matched,
-      }))
-    } else {
-      list = findings.map((f) => ({ f }))
-    }
-    list = list.filter(
-      ({ f }) =>
-        (!hazard || f.hazard_type === hazard) &&
-        (!experiment || experimentsOf(f).includes(experiment)) &&
-        (!material || materialsOf(f).includes(material)) &&
-        (!mission || f.missions.includes(mission)) &&
-        (!evidence || f.evidence_type === evidence),
+  const searched = useMemo(() => {
+    if (!q.trim()) return findings.map((f) => ({ f }) as Row)
+    return search(q, { limit: 50, relativeCutoff: 0.08, kinds: ['finding'] }).map((h): Row => ({
+      f: (h.doc as Extract<typeof h.doc, { kind: 'finding' }>).finding,
+      score: h.score,
+      matched: h.matched,
+    }))
+  }, [q])
+
+  const active: Partial<Record<FilterKey, string>> = { hazard, experiment, material, mission, evidence }
+
+  /** Rows that pass every active filter except `skip`, used for the option counts. */
+  function passing(skip?: FilterKey) {
+    return searched.filter(({ f }) =>
+      FILTER_KEYS.every((key) => key === skip || !active[key] || MATCHERS[key](f, active[key]!)),
     )
-    const sorted = [...list]
+  }
+
+  function optionsFor(key: FilterKey, values: [string, string][]): Option[] {
+    const pool = passing(key)
+    return values.map(([value, label]) => ({
+      value,
+      label,
+      count: pool.filter(({ f }) => MATCHERS[key](f, value)).length,
+    }))
+  }
+
+  const results = (() => {
+    const sorted = passing()
     if (sort === 'score' || (sort === 'relevance' && !q)) {
       sorted.sort((a, b) => b.f.safety_score - a.f.safety_score || a.f.id.localeCompare(b.f.id))
     } else if (sort === 'id') {
@@ -68,7 +95,7 @@ export default function ExplorerPage() {
       sorted.sort((a, b) => a.f.experiment.localeCompare(b.f.experiment) || a.f.id.localeCompare(b.f.id))
     }
     return sorted
-  }, [q, hazard, experiment, material, mission, evidence, sort])
+  })()
 
   const activeFilters = [hazard, experiment, material, mission, evidence].filter(Boolean).length
 
@@ -100,35 +127,50 @@ export default function ExplorerPage() {
             label="Hazard"
             value={hazard}
             onChange={(v) => update('hazard', v)}
-            options={findingsDataset.hazard_types.map((h) => [h, HAZARD_LABELS[h]])}
+            options={optionsFor(
+              'hazard',
+              findingsDataset.hazard_types.map((h) => [h, HAZARD_LABELS[h]]),
+            )}
           />
           <Select
             id="experiment"
             label="Experiment"
             value={experiment}
             onChange={(v) => update('experiment', v)}
-            options={EXPERIMENTS.map((e) => [e, e])}
+            options={optionsFor(
+              'experiment',
+              EXPERIMENTS.map((e) => [e, e]),
+            )}
           />
           <Select
             id="material"
             label="Material"
             value={material}
             onChange={(v) => update('material', v)}
-            options={FINDING_MATERIALS.map((m) => [m, m])}
+            options={optionsFor(
+              'material',
+              FINDING_MATERIALS.map((m) => [m, m]),
+            )}
           />
           <Select
             id="mission"
             label="Relevant to mission"
             value={mission}
             onChange={(v) => update('mission', v)}
-            options={MISSIONS.map((m) => [m, m])}
+            options={optionsFor(
+              'mission',
+              MISSIONS.map((m) => [m, m]),
+            )}
           />
           <Select
             id="evidence"
             label="Evidence type"
             value={evidence}
             onChange={(v) => update('evidence', v)}
-            options={(Object.keys(EVIDENCE_LABELS) as EvidenceType[]).map((e) => [e, EVIDENCE_LABELS[e].label])}
+            options={optionsFor(
+              'evidence',
+              (Object.keys(EVIDENCE_LABELS) as EvidenceType[]).map((e) => [e, EVIDENCE_LABELS[e].label]),
+            )}
           />
           {activeFilters > 0 && (
             <button
@@ -166,11 +208,23 @@ export default function ExplorerPage() {
 
           {results.length === 0 ? (
             <div className="panel p-10 text-center">
-              <p className="text-white">No findings match these filters.</p>
+              <p className="text-white">No findings match this combination.</p>
               <p className="mt-1 text-sm text-slate-400">
-                The knowledge base covers ignition, flame spread, materials, extinguishment and smoke detection. Try a
-                broader term or clear a filter.
+                Remove one of these to widen the results. The counts in each list show how many findings every option
+                would leave.
               </p>
+              <div className="mt-4 flex flex-wrap justify-center gap-2">
+                {q && (
+                  <button className="chip" onClick={() => update('q', '')}>
+                    Search “{q}” ×
+                  </button>
+                )}
+                {FILTER_KEYS.filter((key) => active[key]).map((key) => (
+                  <button key={key} className="chip" onClick={() => update(key, '')}>
+                    {FILTER_LABELS[key]}: {displayValue(key, active[key]!)} ×
+                  </button>
+                ))}
+              </div>
             </div>
           ) : (
             <ul className="grid gap-4 xl:grid-cols-2">
@@ -189,6 +243,20 @@ export default function ExplorerPage() {
   )
 }
 
+const FILTER_LABELS: Record<FilterKey, string> = {
+  hazard: 'Hazard',
+  experiment: 'Experiment',
+  material: 'Material',
+  mission: 'Mission',
+  evidence: 'Evidence',
+}
+
+function displayValue(key: FilterKey, value: string): string {
+  if (key === 'hazard') return HAZARD_LABELS[value as HazardType] ?? value
+  if (key === 'evidence') return EVIDENCE_LABELS[value as EvidenceType]?.label ?? value
+  return value
+}
+
 function Select({
   id,
   label,
@@ -199,7 +267,7 @@ function Select({
   id: string
   label: string
   value: string
-  options: [string, string][]
+  options: Option[]
   onChange: (value: string) => void
 }) {
   return (
@@ -214,9 +282,9 @@ function Select({
         className="mt-1.5 w-full rounded-lg border border-slate-700 bg-slate-950/70 px-3 py-2 text-sm text-slate-200 focus:border-cyan-500 focus:outline-none"
       >
         <option value="">All</option>
-        {options.map(([v, l]) => (
-          <option key={v} value={v}>
-            {l}
+        {options.map((o) => (
+          <option key={o.value} value={o.value} disabled={o.count === 0 && o.value !== value}>
+            {o.label} ({o.count})
           </option>
         ))}
       </select>
