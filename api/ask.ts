@@ -1,4 +1,3 @@
-import Anthropic from '@anthropic-ai/sdk'
 import type { VercelRequest, VercelResponse } from '@vercel/node'
 import {
   INSUFFICIENT_EVIDENCE,
@@ -11,8 +10,8 @@ import {
   validateAskRequest,
   type AskResponse,
 } from '../src/lib/assistant.js'
+import { activeProvider, generate } from './_llm.js'
 
-const MODEL = process.env.EMBER_MODEL || 'claude-opus-5-5'
 const WINDOW_MS = 60_000
 const MAX_REQUESTS_PER_WINDOW = 12
 const recent = new Map<string, number[]>()
@@ -54,7 +53,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     return res.status(200).json(body)
   }
 
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!activeProvider()) {
     log('ask.fallback', { reason: 'no_api_key' })
     return res
       .status(200)
@@ -68,25 +67,14 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
   const started = Date.now()
   try {
-    const client = new Anthropic({ timeout: 45_000, maxRetries: 1 })
-    const response = await client.beta.messages.create({
-      model: MODEL,
-      max_tokens: 1500,
-      betas: ['server-side-fallback-2026-07-01'],
-      fallbacks: 'default',
-      output_config: { effort: 'low' },
+    const result = await generate({
       system: SYSTEM_PROMPT,
-      messages: [
-        ...history.map((t) => ({ role: t.role, content: t.content })),
-        {
-          role: 'user',
-          content: `EVIDENCE\n\n${buildEvidenceBlock(hits)}\n\nQUESTION\n${question}`,
-        },
-      ],
+      history,
+      prompt: `EVIDENCE\n\n${buildEvidenceBlock(hits)}\n\nQUESTION\n${question}`,
     })
 
-    if (response.stop_reason === 'refusal') {
-      log('ask.refusal', { ms: Date.now() - started })
+    if (result.kind === 'refusal') {
+      log('ask.refusal', { ms: Date.now() - started, model: result.model })
       return res
         .status(200)
         .json(
@@ -97,11 +85,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
         )
     }
 
-    const raw = response.content
-      .map((b) => (b.type === 'text' ? b.text : ''))
-      .join('')
-      .trim()
-
+    const raw = result.text
     if (!raw || raw.includes('INSUFFICIENT_EVIDENCE')) {
       log('ask.insufficient', { reason: 'model', ms: Date.now() - started })
       const body: AskResponse = { mode: 'insufficient_evidence', answer: INSUFFICIENT_EVIDENCE, sources: [] }
@@ -122,11 +106,11 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       retrieved: hits.length,
       cited: cited.length,
       dropped: dropped.length,
-      model: response.model,
+      model: result.model,
     })
     return res.status(200).json(body)
   } catch (err) {
-    const status = err instanceof Anthropic.APIError ? err.status : undefined
+    const status = err instanceof Error && 'status' in err ? (err as { status?: number }).status : undefined
     log('ask.error', { status, message: err instanceof Error ? err.message : 'unknown', ms: Date.now() - started })
     return res
       .status(200)

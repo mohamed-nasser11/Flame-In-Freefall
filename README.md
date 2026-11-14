@@ -85,7 +85,7 @@ Requirements: Node.js 22 or newer.
 
 ```bash
 npm install
-cp .env.example .env.local   # optional: add ANTHROPIC_API_KEY for Ask EMBER
+cp .env.example .env.local   # optional: add GEMINI_API_KEY (free) or ANTHROPIC_API_KEY
 npm run dev                  # http://localhost:5173
 ```
 
@@ -100,17 +100,19 @@ The development server also serves `/api/ask`. Without an API key, Ask EMBER sti
 
 ### Environment variables
 
-| Name                | Required       | Description                                                        |
-| ------------------- | -------------- | ------------------------------------------------------------------ |
-| `ANTHROPIC_API_KEY` | For AI answers | Server-side only. Never exposed to the browser.                    |
-| `EMBER_MODEL`       | No             | Overrides the model used by Ask EMBER (default `claude-opus-5-5`). |
+| Name                | Required       | Description                                                |
+| ------------------- | -------------- | ---------------------------------------------------------- |
+| `GEMINI_API_KEY`    | For AI answers | Free tier available at Google AI Studio. Server-side only. |
+| `ANTHROPIC_API_KEY` | For AI answers | Used instead of Gemini when set. Server-side only.         |
+| `GEMINI_MODEL`      | No             | Overrides the Gemini model (default `gemini-2.5-flash`).   |
+| `EMBER_MODEL`       | No             | Overrides the Anthropic model (default `claude-opus-5-5`). |
 
 ## Deployment
 
 The app deploys to Vercel's free tier with no extra configuration:
 
 1. Import the repository in Vercel. The Vite preset is detected automatically.
-2. Under **Settings → Environment Variables**, add `ANTHROPIC_API_KEY`.
+2. Under **Settings → Environment Variables**, add `GEMINI_API_KEY` (or `ANTHROPIC_API_KEY`).
 3. Deploy. Static pages are served from `dist/` and `api/ask.ts` runs as a serverless function. `vercel.json` rewrites client routes to `index.html`.
 
 ## Project structure
