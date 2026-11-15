@@ -68,7 +68,7 @@ export default function FindingDrawer({ finding: f, onClose }: { finding: Findin
         </section>
 
         <section className="mt-6 space-y-3">
-          <InterpretationNote label="What it may mean for a spacecraft (EMBER team interpretation)">
+          <InterpretationNote label="What it may mean for a spacecraft (ZeroG Flame team interpretation)">
             {f.safety_implication}
           </InterpretationNote>
           <div className="flex items-center gap-3 rounded-md border border-slate-800 px-3 py-2 text-xs text-slate-400">
@@ -109,7 +109,7 @@ export default function FindingDrawer({ finding: f, onClose }: { finding: Findin
             to={`/ask?q=${encodeURIComponent(`Explain finding ${f.id} and what it means for cabin design`)}`}
             className="btn-ghost"
           >
-            Ask EMBER about this
+            Ask ZeroG Flame about this
           </Link>
           {mapPoints.length > 0 && (
             <Link to="/" className="btn-ghost">

@@ -25,7 +25,10 @@ export default function HomePage() {
         <p className="label text-cyan-300/80">NASA Space Apps 2026 · Flame in Freefall</p>
         <h1 className="mt-3 max-w-4xl font-display text-4xl font-semibold leading-[1.1] tracking-tight text-white sm:text-5xl">
           Fire behaves differently in space.
-          <span className="text-ember-400"> EMBER turns NASA’s flight evidence into fire-safety decisions.</span>
+          <span className="text-ember-400">
+            {' '}
+            ZeroG&nbsp;Flame turns NASA’s flight evidence into fire-safety decisions.
+          </span>
         </h1>
         <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-400 sm:text-lg">
           Check a mission’s fire risks, explore what NASA measured, and see what is still untested. Every claim links to
@@ -141,7 +144,7 @@ export default function HomePage() {
         />
         <Pillar
           step="Interpret"
-          title="Ask EMBER"
+          title="Ask ZeroG Flame"
           to="/ask"
           text="Ask a question in plain language. Answers come only from the knowledge base, with a clickable citation for every claim."
         />

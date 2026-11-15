@@ -1,5 +1,5 @@
 {
-  "dataset": "EMBER Flammability Map points",
+  "dataset": "ZeroG Flame Flammability Map points",
   "version": "1.0",
   "date": "2026-11-13",
   "description": "Microgravity combustion test points from NASA experiments (Saffire, BASS, BASS-II, FLEX) for an O2 % vs flow velocity map, plus reference limits and mission atmosphere presets. Values are taken from the cited pages; nothing is interpolated. See flammability-points-notes.md.",

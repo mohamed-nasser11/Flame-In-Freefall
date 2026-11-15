@@ -82,9 +82,9 @@ export default function RiskCheckPage() {
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       <div className="no-print">
         <SectionHeader eyebrow="Rank" title="Mission Risk Check">
-          Describe the cabin. EMBER compares it with the conditions NASA tested and lists the fire-safety issues to
-          review first, each with its evidence. Ranking uses fixed, published rules, so the same input always gives the
-          same brief. It is a research aid, not a certification or a probability of fire.
+          Describe the cabin. ZeroG Flame compares it with the conditions NASA tested and lists the fire-safety issues
+          to review first, each with its evidence. Ranking uses fixed, published rules, so the same input always gives
+          the same brief. It is a research aid, not a certification or a probability of fire.
         </SectionHeader>
       </div>
 
@@ -278,8 +278,8 @@ export default function RiskCheckPage() {
               .
             </p>
             <p className="mt-2">
-              EMBER is a research and decision-support aid built for NASA Space Apps 2026. It does not certify designs
-              or replace a fire-safety engineer’s analysis.
+              ZeroG Flame is a research and decision-support aid built for NASA Space Apps 2026. It does not certify
+              designs or replace a fire-safety engineer’s analysis.
             </p>
           </div>
         </section>
@@ -318,7 +318,7 @@ function BriefHeader({ report }: { report: ReturnType<typeof runRiskCheck> }) {
         />
       </dl>
       <p className="mt-4 text-sm text-slate-300">{report.coverage.message}</p>
-      <p className="mt-1 hidden text-xs print:block">Generated {generated} · EMBER · Sources: NASA PSI, NTRS</p>
+      <p className="mt-1 hidden text-xs print:block">Generated {generated} · ZeroG Flame · Sources: NASA PSI, NTRS</p>
     </div>
   )
 }

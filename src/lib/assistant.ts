@@ -38,9 +38,9 @@ export interface AskResponse {
 }
 
 export const INSUFFICIENT_EVIDENCE =
-  'The EMBER knowledge base does not contain enough evidence to answer this. It covers 28 curated findings and reference limits from NASA microgravity combustion experiments (Saffire, BASS, BASS-II, FLEX, FLEX-2, SAME, SAME-R), not NASA’s full research archive.'
+  'The ZeroG Flame knowledge base does not contain enough evidence to answer this. It covers 28 curated findings and reference limits from NASA microgravity combustion experiments (Saffire, BASS, BASS-II, FLEX, FLEX-2, SAME, SAME-R), not NASA’s full research archive.'
 
-export const SYSTEM_PROMPT = `You are EMBER, a research assistant for spacecraft fire-safety engineers.
+export const SYSTEM_PROMPT = `You are ZeroG Flame, a research assistant for spacecraft fire-safety engineers.
 You answer only from the EVIDENCE records supplied in the user turn. These records are curated from NASA microgravity combustion experiments and reports. You have no other knowledge source for this task.
 
 Rules:

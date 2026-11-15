@@ -77,8 +77,8 @@ export default function ComparePage() {
   return (
     <div className="mx-auto max-w-7xl px-4 py-12 sm:px-6">
       <SectionHeader eyebrow="Explore" title="Compare materials">
-        Put up to three tested materials side by side using the flight data on the flammability map. EMBER flags when
-        the test conditions differ enough that the numbers should not be compared directly.
+        Put up to three tested materials side by side using the flight data on the flammability map. ZeroG Flame flags
+        when the test conditions differ enough that the numbers should not be compared directly.
       </SectionHeader>
 
       <Panel className="mt-8 p-5">

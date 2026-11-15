@@ -27,7 +27,7 @@ export default function MethodologyPage() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
       <SectionHeader eyebrow="Validity" title="Data & methodology">
-        How EMBER turns NASA documents into findings, map points and review items, and where its limits are.
+        How ZeroG Flame turns NASA documents into findings, map points and review items, and where its limits are.
       </SectionHeader>
 
       <div className="mt-8 space-y-6">
@@ -86,7 +86,7 @@ export default function MethodologyPage() {
           </div>
         </Section>
 
-        <Section title="Ask EMBER">
+        <Section title="Ask ZeroG Flame">
           <ol className="list-decimal space-y-1 pl-5">
             <li>
               The question is matched against findings and reference limits with BM25 keyword ranking, field weights and
@@ -101,10 +101,10 @@ export default function MethodologyPage() {
               page.
             </li>
             <li>
-              If nothing relevant is retrieved, or the model reports that the records do not answer the question, EMBER
-              returns a fixed “insufficient evidence” message.
+              If nothing relevant is retrieved, or the model reports that the records do not answer the question, ZeroG
+              Flame returns a fixed “insufficient evidence” message.
             </li>
-            <li>If the model is unavailable, EMBER shows the retrieved records themselves, clearly labelled.</li>
+            <li>If the model is unavailable, ZeroG Flame shows the retrieved records themselves, clearly labelled.</li>
           </ol>
           <p>
             With a few dozen short records, keyword ranking is accurate, fast and easy to audit. Embedding search would
@@ -121,7 +121,8 @@ export default function MethodologyPage() {
             <li>The relevance rating (1–5) on findings is the team’s editorial judgement.</li>
             <li>The model boundary on the map is schematic: only two values are labelled in the source figure.</li>
             <li>
-              EMBER is a research aid. It does not certify materials or designs and gives no emergency instructions.
+              ZeroG Flame is a research aid. It does not certify materials or designs and gives no emergency
+              instructions.
             </li>
           </ul>
         </Section>

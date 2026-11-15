@@ -9,7 +9,7 @@ import { defineConfig, loadEnv, type Plugin } from 'vite'
  */
 function apiRoutes(): Plugin {
   return {
-    name: 'ember-api-routes',
+    name: 'zerog-flame-api-routes',
     configureServer(server) {
       server.middlewares.use('/api', async (req: IncomingMessage, res: ServerResponse, next) => {
         const name = (req.url ?? '').split('?')[0].replace(/^\//, '')

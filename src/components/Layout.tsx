@@ -20,7 +20,7 @@ export default function Layout() {
         <div className="mx-auto flex max-w-7xl flex-wrap items-center gap-x-8 gap-y-2 px-4 py-3 sm:px-6">
           <NavLink to="/" className="flex items-center gap-2">
             <img src="/favicon.svg" alt="" className="h-7 w-7" />
-            <span className="font-display text-lg font-semibold tracking-wide text-white">EMBER</span>
+            <span className="font-display text-lg font-semibold tracking-wide text-white">ZeroG Flame</span>
           </NavLink>
           <nav className="-mx-1 flex min-w-0 basis-full flex-wrap gap-1 text-sm sm:basis-auto sm:flex-1 sm:flex-nowrap sm:overflow-x-auto">
             {NAV.map((item) => (
@@ -47,7 +47,7 @@ export default function Layout() {
 
       <footer className="no-print border-t border-slate-800 py-6 text-xs text-slate-500">
         <div className="mx-auto flex max-w-7xl flex-wrap justify-between gap-2 px-4 sm:px-6">
-          <span>EMBER · NASA Space Apps Challenge 2026 · “Flame in Freefall”</span>
+          <span>ZeroG Flame · NASA Space Apps Challenge 2026 · “Flame in Freefall”</span>
           <span className="flex gap-4">
             <NavLink to="/methodology" className="hover:text-slate-300">
               Data &amp; methodology

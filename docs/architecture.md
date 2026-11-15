@@ -1,6 +1,6 @@
 # Architecture
 
-EMBER is a single-page React application with one serverless function. Everything except the language-model call runs in the browser from two JSON files, so the core product works offline from the model provider.
+ZeroG Flame is a single-page React application with one serverless function. Everything except the language-model call runs in the browser from two JSON files, so the core product works offline from the model provider.
 
 ## Modules
 
@@ -24,7 +24,7 @@ EMBER is a single-page React application with one serverless function. Everythin
 
 The output separates four kinds of statement: documented results (the evidence list), similarity to a test (the comparison), interpretation (the item title and the team's safety notes), and suggested questions for the engineer.
 
-## Ask EMBER
+## Ask ZeroG Flame
 
 1. `validateAskRequest` checks types and lengths and keeps the last six turns of history.
 2. `retrieve` runs BM25 over the knowledge base. Short follow-up questions are also matched together with the previous question.

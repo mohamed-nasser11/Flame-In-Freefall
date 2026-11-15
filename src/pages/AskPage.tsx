@@ -79,9 +79,10 @@ export default function AskPage() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-12 sm:px-6">
-      <SectionHeader eyebrow="Interpret" title="Ask EMBER">
-        Ask about microgravity fire behaviour in plain language. Answers are written only from EMBER’s knowledge base of
-        NASA findings, and every claim links to its record. If the records do not cover a question, EMBER says so.
+      <SectionHeader eyebrow="Interpret" title="Ask ZeroG Flame">
+        Ask about microgravity fire behaviour in plain language. Answers are written only from ZeroG Flame’s knowledge
+        base of NASA findings, and every claim links to its record. If the records do not cover a question, ZeroG Flame
+        says so.
       </SectionHeader>
 
       {exchanges.length === 0 && (
@@ -154,7 +155,7 @@ export default function AskPage() {
           </button>
         </div>
         <p className="mt-2 text-center text-[11px] text-slate-600">
-          Research aid only. Answers are limited to the curated NASA records in EMBER and may be incomplete.
+          Research aid only. Answers are limited to the curated NASA records in ZeroG Flame and may be incomplete.
         </p>
       </form>
     </div>

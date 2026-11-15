@@ -1,14 +1,14 @@
-# EMBER · Flame in Freefall
+# ZeroG Flame · Flame in Freefall
 
 **Evidence-backed Microgravity Burn Explorer & Risk advisor**
 
-EMBER turns NASA's microgravity combustion research into fire-safety decisions for crewed spacecraft. It puts findings from Saffire, BASS, BASS-II, FLEX and SAME in one place, compares a mission's cabin atmosphere with the conditions NASA actually tested, and lists the issues a fire-safety engineer should review first, with every claim linked to its NASA source.
+ZeroG Flame turns NASA's microgravity combustion research into fire-safety decisions for crewed spacecraft. It puts findings from Saffire, BASS, BASS-II, FLEX and SAME in one place, compares a mission's cabin atmosphere with the conditions NASA actually tested, and lists the issues a fire-safety engineer should review first, with every claim linked to its NASA source.
 
 Built for the **NASA Space Apps Challenge 2026**, challenge _Flame in Freefall_.
 
 ![Flammability map](docs/images/flammability-map.png)
 
-> EMBER is a research and decision-support tool. It does not certify materials or spacecraft designs and does not give emergency instructions.
+> ZeroG Flame is a research and decision-support tool. It does not certify materials or spacecraft designs and does not give emergency instructions.
 
 ## Why
 
@@ -19,7 +19,7 @@ Fire behaves differently without gravity. With no buoyancy, hot gas does not ris
 - a directed nitrogen jet can feed a flame instead of putting it out;
 - smoke from overheating is mostly sub-micron and reaches detectors later.
 
-These results are spread across dozens of reports. Artemis-era habitats may also use an oxygen-enriched 34% O2, 8.2 psia atmosphere that no solid-material flight test has covered. EMBER makes both the evidence and its limits visible.
+These results are spread across dozens of reports. Artemis-era habitats may also use an oxygen-enriched 34% O2, 8.2 psia atmosphere that no solid-material flight test has covered. ZeroG Flame makes both the evidence and its limits visible.
 
 ## What it does
 
@@ -28,7 +28,7 @@ These results are spread across dozens of reports. Artemis-era habitats may also
 | Summarize      | **Research Explorer**  | Search and filter curated findings by hazard, experiment, material and evidence type. Each finding separates the reported result, the conditions, the team's interpretation and the caveats, with the source document and page.                                         |
 | Rank           | **Mission Risk Check** | Enter oxygen, pressure, ventilation, gravity, materials, suppression and detection. Get a ranked list of issues to review, each with its triggering factors, a comparison with the closest NASA test and the evidence. Exports as a printable Mission Fire Brief (PDF). |
 | Interpret      | **Flammability Map**   | 72 flight test conditions plotted as oxygen against airflow, with mission cabin atmospheres overlaid and an explicit "outside tested range" verdict.                                                                                                                    |
-| Interpret      | **Ask EMBER**          | Questions in plain language, answered only from the knowledge base, with a clickable citation on every claim and an explicit "insufficient evidence" answer when the records do not cover the question.                                                                 |
+| Interpret      | **Ask ZeroG Flame**    | Questions in plain language, answered only from the knowledge base, with a clickable citation on every claim and an explicit "insufficient evidence" answer when the records do not cover the question.                                                                 |
 | Explore        | **Compare**            | Up to three materials side by side, with warnings when test conditions are not comparable.                                                                                                                                                                              |
 | Interpret      | **Knowledge Gaps**     | What NASA has not tested yet (lunar and Martian gravity, the 34% O2 atmosphere, large-scale suppression), with a proposed experiment for each.                                                                                                                          |
 
@@ -38,7 +38,7 @@ These results are spread across dozens of reports. Artemis-era habitats may also
 
 1. **Overview**: select _NASA Exploration Atmosphere_ on the map and read the "outside tested range" verdict.
 2. **Research Explorer**: open finding `F10` (nitrogen jet) and follow the source link.
-3. **Ask EMBER**: ask _"Does turning off cabin ventilation help put out a fire?"_ and open a citation.
+3. **Ask ZeroG Flame**: ask _"Does turning off cabin ventilation help put out a fire?"_ and open a citation.
 4. **Mission Risk Check**: start from the Exploration preset, review the top five issues and export the brief.
 5. **Knowledge Gaps**: see which mission conditions have no flight data at all.
 
@@ -89,7 +89,7 @@ cp .env.example .env.local   # optional: add GEMINI_API_KEY (free) or ANTHROPIC_
 npm run dev                  # http://localhost:5173
 ```
 
-The development server also serves `/api/ask`. Without an API key, Ask EMBER still works in records-only mode.
+The development server also serves `/api/ask`. Without an API key, Ask ZeroG Flame still works in records-only mode.
 
 | Command             | Purpose                                                     |
 | ------------------- | ----------------------------------------------------------- |
@@ -105,7 +105,7 @@ The development server also serves `/api/ask`. Without an API key, Ask EMBER sti
 | `GEMINI_API_KEY`    | For AI answers | Free tier available at Google AI Studio. Server-side only.    |
 | `ANTHROPIC_API_KEY` | For AI answers | Used instead of Gemini when set. Server-side only.            |
 | `GEMINI_MODEL`      | No             | Overrides the Gemini model (default `gemini-3.1-flash-lite`). |
-| `EMBER_MODEL`       | No             | Overrides the Anthropic model (default `claude-opus-5-5`).    |
+| `ANTHROPIC_MODEL`   | No             | Overrides the Anthropic model (default `claude-opus-5-5`).    |
 
 ## Deployment
 
@@ -136,4 +136,4 @@ docs/                      architecture and data notes
 
 ## License
 
-[MIT](LICENSE). NASA data is used under NASA's media and data usage guidelines. EMBER is not affiliated with or endorsed by NASA.
+[MIT](LICENSE). NASA data is used under NASA's media and data usage guidelines. ZeroG Flame is not affiliated with or endorsed by NASA.

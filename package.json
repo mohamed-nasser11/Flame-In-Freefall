@@ -34,6 +34,6 @@
     "vite": "^8.3.6",
     "vitest": "^5.1.0"
   },
-  "description": "EMBER: an evidence-backed microgravity fire safety explorer built on NASA combustion research.",
+  "description": "ZeroG Flame: an evidence-backed microgravity fire safety explorer built on NASA combustion research.",
   "license": "MIT"
 }

@@ -153,7 +153,7 @@ const RULES: Rule[] = [
         'Which cabin materials have flammability data at this oxygen level and pressure? Can the material list be screened at the actual mission atmosphere before flight?',
       evidence: [finding('F09'), limit('LIM-MARGIN'), limit('LIM-UG-ROD-CONC')],
       uncertainty:
-        'EMBER cannot say whether this cabin is safe or unsafe. It can only say that no flight test in this data set matches it.',
+        'ZeroG Flame cannot say whether this cabin is safe or unsafe. It can only say that no flight test in this data set matches it.',
     }
   },
 

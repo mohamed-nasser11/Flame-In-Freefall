@@ -23,7 +23,7 @@ export function activeProvider(env: NodeJS.ProcessEnv = process.env): 'anthropic
 
 export async function generate(req: LlmRequest, env: NodeJS.ProcessEnv = process.env): Promise<LlmResult> {
   const provider = activeProvider(env)
-  if (provider === 'anthropic') return generateAnthropic(req, env.EMBER_MODEL || 'claude-opus-5-5')
+  if (provider === 'anthropic') return generateAnthropic(req, env.ANTHROPIC_MODEL || 'claude-opus-5-5')
   if (provider === 'gemini') {
     const models = env.GEMINI_MODEL ? [env.GEMINI_MODEL, ...GEMINI_MODELS] : GEMINI_MODELS
     return generateGemini(req, env.GEMINI_API_KEY!, [...new Set(models)])
